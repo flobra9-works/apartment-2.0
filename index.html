@@ -1,0 +1,3286 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>B.E@H.O.M.E — Ferienwohnung am Attersee, Timelkam</title>
+<meta name="description" content="Großzügige Ferienwohnung mit Panoramablick in Timelkam am Tor zum Salzkammergut. Zwei Schlafzimmer, Balkon und Garten, wenige Minuten vom Attersee. 4,98 Sterne auf Airbnb.">
+<meta name="author" content="Gerlinde Brandt">
+<link rel="canonical" href="https://gerlinde-brandt.at/ferienwohnung/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="B.E@H.O.M.E — Ferienwohnung am Attersee">
+<meta property="og:description" content="Zur Ruhe kommen. Einfach sein. Großzügige Ferienwohnung mit Panoramablick in Timelkam, wenige Minuten vom Attersee.">
+<meta property="og:image" content="https://gerlinde-brandt.at/ferienwohnung/images/hero-attersee-panorama.jpg">
+<meta property="og:locale" content="de_AT">
+<meta property="og:url" content="https://gerlinde-brandt.at/ferienwohnung/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Archivo:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preload" as="image" href="images/hero-attersee-panorama.jpg" fetchpriority="high">
+
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --ink:#f2f7f8;
+  --ink-soft:rgba(242,247,248,.78);
+  /* .72 keeps small text (credits, footer links, placeholders) at AA
+     against the lightest part of the page gradient */
+  --ink-faint:rgba(242,247,248,.72);
+
+  --turquoise:oklch(.72 .11 195);
+  --turquoise-light:oklch(.82 .10 195);
+  --purple:oklch(.65 .11 300);
+  --purple-light:oklch(.78 .10 305);
+
+  --anthracite:#24282b;
+
+  --glass:rgba(255,255,255,.07);
+  --glass-strong:rgba(255,255,255,.11);
+  --glass-border:rgba(255,255,255,.14);
+  --glass-border-strong:rgba(255,255,255,.24);
+
+  --grad-accent:linear-gradient(90deg,var(--turquoise),var(--purple));
+  --shadow-deep:0 30px 70px rgba(0,0,0,.4);
+  --shadow-soft:0 12px 32px rgba(0,0,0,.22);
+
+  --radius-card:18px;
+  --radius-img:20px;
+  --radius-pill:999px;
+
+  --step--1:clamp(.875rem,.84rem + .16vw,.95rem);
+  --step-0:clamp(1rem,.96rem + .2vw,1.09rem);
+  --step-1:clamp(1.2rem,1.12rem + .38vw,1.45rem);
+  --step-2:clamp(1.5rem,1.34rem + .78vw,2.05rem);
+  --step-3:clamp(2rem,1.62rem + 1.86vw,3.3rem);
+  --step-4:clamp(2.6rem,1.72rem + 4.3vw,4.5rem);
+
+  --gutter:clamp(20px,5vw,40px);
+  --section-gap:clamp(72px,11vw,140px);
+  --measure:66ch;
+  --shell:1180px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:'Archivo',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-size:var(--step-0);
+  line-height:1.62;
+  color:var(--ink);
+  background:
+    linear-gradient(170deg,
+      oklch(.42 .09 200) 0%,
+      oklch(.42 .09 255) 55%,
+      oklch(.42 .11 300) 100%);
+  background-attachment:fixed;
+  -webkit-font-smoothing:antialiased;
+}
+body.locked{overflow:hidden}
+
+/* Aurora atmosphere behind everything */
+.aurora-field{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+}
+.aurora-field span{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(90px);
+  will-change:transform;
+}
+.aurora-field .g1{
+  width:min(60vw,720px);aspect-ratio:1;
+  background:oklch(.78 .13 195 / .5);
+  top:-14vh;left:-8vw;
+  animation:drift-a 28s ease-in-out infinite alternate;
+}
+.aurora-field .g2{
+  width:min(52vw,640px);aspect-ratio:1;
+  background:oklch(.72 .14 300 / .55);
+  top:38vh;right:-12vw;
+  animation:drift-b 34s ease-in-out infinite alternate;
+}
+.aurora-field .g3{
+  width:min(46vw,560px);aspect-ratio:1;
+  background:oklch(.75 .12 240 / .4);
+  bottom:-16vh;left:22vw;
+  animation:drift-c 24s ease-in-out infinite alternate;
+}
+@keyframes drift-a{to{transform:translate3d(8vw,10vh,0) scale(1.15)}}
+@keyframes drift-b{to{transform:translate3d(-10vw,-8vh,0) scale(1.2)}}
+@keyframes drift-c{to{transform:translate3d(6vw,-12vh,0) scale(1.1)}}
+
+/* ============================================================
+   PRIMITIVES
+   ============================================================ */
+.shell{
+  width:100%;
+  max-width:var(--shell);
+  margin-inline:auto;
+  padding-inline:var(--gutter);
+}
+
+main{position:relative;z-index:1}
+
+section{padding-block:var(--section-gap)}
+
+h1,h2,h3,h4{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-weight:500;
+  line-height:1.06;
+  margin:0;
+  text-wrap:balance;
+  letter-spacing:-.012em;
+}
+h1{font-size:var(--step-4)}
+h2{font-size:var(--step-3)}
+h3{font-size:var(--step-2)}
+h2 em,h1 em,h3 em{
+  font-style:italic;
+  font-weight:500;
+  background:linear-gradient(92deg,var(--turquoise-light),var(--purple-light));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+p{margin:0;max-width:var(--measure)}
+
+.eyebrow{
+  font-family:'JetBrains Mono',ui-monospace,monospace;
+  font-size:.76rem;
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:.3em;
+  color:var(--turquoise-light);
+  margin:0 0 clamp(16px,2.4vw,26px);
+  display:block;
+}
+
+.lede{
+  font-size:var(--step-1);
+  color:var(--ink-soft);
+  line-height:1.55;
+}
+
+/* Buttons — all ≥44px tall */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.55em;
+  min-height:48px;
+  padding:.7em 1.6em;
+  border-radius:var(--radius-pill);
+  font-family:'Space Grotesk',sans-serif;
+  font-size:1rem;
+  font-weight:600;
+  text-decoration:none;
+  border:1px solid transparent;
+  cursor:pointer;
+  transition:transform .25s cubic-bezier(.2,.7,.3,1),box-shadow .25s,background .25s,border-color .25s;
+}
+.btn svg{width:17px;height:17px;stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.btn-primary{
+  background:var(--grad-accent);
+  color:#fff;
+  box-shadow:0 10px 28px oklch(.65 .11 280 / .34);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 38px oklch(.65 .11 280 / .45)}
+.btn-ghost{
+  background:rgba(255,255,255,.1);
+  border-color:var(--glass-border-strong);
+  color:var(--ink);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+.btn-ghost:hover{background:rgba(255,255,255,.18);transform:translateY(-2px)}
+
+:where(a,button,summary,input,textarea,select):focus-visible{
+  outline:2px solid var(--turquoise-light);
+  outline-offset:3px;
+  border-radius:6px;
+}
+
+.card{
+  background:var(--glass);
+  border:1px solid var(--glass-border);
+  border-radius:var(--radius-card);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+}
+
+figure{margin:0}
+img{max-width:100%;height:auto;display:block}
+
+.framed{
+  border-radius:var(--radius-img);
+  box-shadow:var(--shadow-deep);
+  overflow:hidden;
+}
+
+.credit-line{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.76rem;
+  letter-spacing:.03em;
+  color:var(--ink-faint);
+  line-height:1.7;
+  max-width:none;
+}
+.credit-line a{color:inherit;text-underline-offset:2px}
+
+/* ============================================================
+   SCROLL PROGRESS
+   ============================================================ */
+.progress{
+  position:fixed;
+  top:0;left:0;right:0;
+  height:3px;
+  z-index:90;
+  background:transparent;
+  pointer-events:none;
+}
+.progress i{
+  display:block;
+  height:100%;
+  width:0%;
+  background:var(--grad-accent);
+  transition:width .1s linear;
+}
+
+/* ============================================================
+   SKIP LINK
+   ============================================================ */
+.skip{
+  position:absolute;
+  left:-9999px;
+  top:12px;
+  z-index:200;
+  background:var(--anthracite);
+  color:var(--ink);
+  padding:12px 20px;
+  border-radius:var(--radius-pill);
+}
+.skip:focus{left:16px}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:60;
+  padding-block:14px;
+}
+/* The blurred bar lives on a pseudo-element, never on .topbar itself:
+   backdrop-filter makes an element a containing block for its position:fixed
+   descendants, which would drag the mobile bottom nav up into the header. */
+.topbar::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  opacity:0;
+  pointer-events:none;
+  background:oklch(.30 .06 250 / .78);
+  backdrop-filter:blur(18px) saturate(1.3);
+  -webkit-backdrop-filter:blur(18px) saturate(1.3);
+  box-shadow:0 1px 0 rgba(255,255,255,.09);
+  transition:opacity .35s;
+}
+.topbar.stuck::before{opacity:1}
+
+.topbar .shell{
+  display:flex;
+  align-items:center;
+  gap:clamp(12px,2vw,28px);
+}
+.brand{
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:700;
+  font-size:1.02rem;
+  letter-spacing:.02em;
+  color:var(--ink);
+  text-decoration:none;
+  white-space:nowrap;
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+  text-shadow:0 1px 12px rgba(6,18,30,.5);
+}
+.brand span{color:var(--turquoise-light)}
+
+.navpill{
+  display:flex;
+  gap:2px;
+  margin-inline:auto;
+  padding:5px;
+  border-radius:var(--radius-pill);
+  background:var(--glass);
+  border:1px solid var(--glass-border);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+}
+.navpill a{
+  padding:11px 17px;
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+  border-radius:var(--radius-pill);
+  font-size:.925rem;
+  font-weight:500;
+  color:var(--ink-soft);
+  text-decoration:none;
+  white-space:nowrap;
+  transition:color .25s,background .25s;
+}
+.navpill a:hover{color:var(--ink)}
+.navpill a[aria-current="true"]{
+  background:var(--glass-strong);
+  color:var(--ink);
+  box-shadow:inset 0 0 0 1px var(--glass-border);
+}
+
+.nav-right{display:flex;align-items:center;gap:10px;margin-left:auto}
+
+.langswitch{
+  display:flex;
+  align-items:center;
+  background:var(--glass);
+  border:1px solid var(--glass-border);
+  border-radius:var(--radius-pill);
+  padding:4px;
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+}
+.langswitch button{
+  min-width:44px;
+  min-height:44px;
+  padding:0 12px;
+  border:0;
+  background:transparent;
+  border-radius:var(--radius-pill);
+  color:var(--ink-faint);
+  font-family:'JetBrains Mono',monospace;
+  font-size:.78rem;
+  font-weight:500;
+  letter-spacing:.06em;
+  cursor:pointer;
+  transition:color .2s,background .2s;
+}
+.langswitch button:hover{color:var(--ink)}
+.langswitch button[aria-pressed="true"]{
+  background:var(--glass-strong);
+  color:var(--turquoise-light);
+}
+
+.nav-cta{display:inline-flex}
+
+@media (max-width:1000px){
+  .navpill{
+    position:fixed;
+    inset:auto 0 0 0;
+    margin:0;
+    border-radius:22px 22px 0 0;
+    justify-content:space-around;
+    padding:8px max(12px,env(safe-area-inset-left)) max(10px,env(safe-area-inset-bottom));
+    background:oklch(.28 .05 255 / .92);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    border:0;
+    border-top:1px solid var(--glass-border);
+    overflow-x:auto;
+    scrollbar-width:none;
+    z-index:70;
+  }
+  .navpill::-webkit-scrollbar{display:none}
+  .navpill a{font-size:.85rem;padding:9px 13px}
+  .nav-cta{display:none}
+}
+
+/* ============================================================
+   HERO — the panorama carries the page; the words sit in the
+   natural shade at its foot, with no panel or frame around them
+   ============================================================ */
+.hero{
+  position:relative;
+  min-height:100svh;
+  display:flex;
+  align-items:flex-end;             /* words settle at the foot of the view */
+  padding-block:clamp(90px,14vh,150px) clamp(78px,12vh,130px);
+  margin-top:calc(-1 * (44px + 28px));
+  padding-top:calc(44px + 28px + clamp(60px,10vh,110px));
+  overflow:hidden;
+  isolation:isolate;
+}
+.hero-bg{
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  overflow:hidden;
+}
+.hero-bg img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 38%;
+  transform:scale(1.12);
+  will-change:transform;
+}
+/* Bottom-weighted grading — the sky and mountains stay open, the shade
+   gathers only where the type sits. Reads as light, never as a panel. */
+.hero-bg::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg,
+      rgba(7,18,32,.6) 0%,
+      rgba(7,18,32,.54) 18%,
+      rgba(7,18,32,.66) 42%,
+      rgba(7,18,32,.86) 70%,
+      rgba(7,18,32,.94) 100%),
+    linear-gradient(100deg,
+      rgba(7,18,32,.46) 0%,
+      rgba(7,18,32,.2) 52%,
+      rgba(7,18,32,0) 100%);
+}
+/* Portrait screens crop the panorama to a narrow slice and the copy fills
+   almost the whole view, so there is no clear top to keep open — an even
+   veil carries the type instead of a bottom ramp.
+   Must follow the rule above — same specificity, source order decides. */
+@media (max-width:900px){
+  .hero-bg::after{
+    background:linear-gradient(180deg,
+      rgba(7,18,32,.58) 0%,
+      rgba(7,18,32,.6) 18%,
+      rgba(7,18,32,.74) 50%,
+      rgba(7,18,32,.94) 100%);
+  }
+}
+.hero-glow{
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  overflow:hidden;
+}
+.hero-glow span{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(80px);
+  mix-blend-mode:screen;
+}
+.hero-glow .hg1{
+  width:min(46vw,520px);aspect-ratio:1;
+  background:oklch(.78 .13 195 / .3);
+  top:8%;left:-8%;
+  animation:drift-a 26s ease-in-out infinite alternate;
+}
+.hero-glow .hg2{
+  width:min(40vw,460px);aspect-ratio:1;
+  background:oklch(.72 .14 300 / .34);
+  bottom:6%;right:-6%;
+  animation:drift-b 32s ease-in-out infinite alternate;
+}
+
+.hero .shell{position:relative;z-index:2}
+/* White, not turquoise, only here: over a photograph the brighter ink tolerates
+   nearly twice the background luminance at the same contrast ratio, which lets
+   the panorama stay open instead of being dimmed to carry a small label. */
+.hero .eyebrow{
+  color:var(--ink);
+  text-shadow:0 1px 16px rgba(5,14,26,.85);
+}
+.hero h1{
+  margin-bottom:clamp(20px,3vw,32px);
+  text-shadow:0 2px 30px rgba(5,14,26,.7);
+}
+.hero .lede{
+  margin-bottom:clamp(26px,3.4vw,38px);
+  color:rgba(242,247,248,.92);
+  text-shadow:0 1px 20px rgba(5,14,26,.8);
+}
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  align-items:center;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:.5em;
+  min-height:44px;
+  padding:.45em 1.15em;
+  border-radius:var(--radius-pill);
+  font-family:'Space Grotesk',sans-serif;
+  font-size:.9rem;
+  font-weight:600;
+  color:var(--ink);
+  background:oklch(.52 .13 300 / .5);
+  border:1px solid oklch(.75 .12 300 / .55);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+.badge::before{
+  content:'';
+  width:7px;height:7px;
+  border-radius:50%;
+  background:var(--purple-light);
+  box-shadow:0 0 0 4px oklch(.78 .10 305 / .28);
+}
+
+/* Airbnb standing, straight from the listing */
+.hero-rating{margin-bottom:clamp(18px,2.4vw,24px)}
+
+/* Available to screen readers, never painted */
+.sr-note{
+  position:absolute;
+  width:1px;height:1px;
+  padding:0;margin:-1px;
+  overflow:hidden;
+  clip-path:inset(50%);
+  white-space:nowrap;
+  border:0;
+}
+
+.hero-credit{
+  position:absolute;
+  right:var(--gutter);
+  bottom:clamp(14px,2.4vh,22px);
+  z-index:2;
+  font-size:.68rem;
+  margin:0;
+  text-align:right;
+  max-width:min(46ch,60vw);
+  opacity:.75;
+}
+@media (max-width:760px){
+  .hero-credit{position:static;text-align:left;max-width:none;margin-top:22px;opacity:.8}
+}
+
+/* ---- Hero entrance ---- */
+.js .hero-anim{opacity:0;transform:translateY(26px)}
+.hero-lit .hero-anim{
+  opacity:1;
+  transform:none;
+  transition:opacity 1s cubic-bezier(.22,.68,.28,1),transform 1s cubic-bezier(.22,.68,.28,1);
+}
+.hero-lit .d1{transition-delay:.15s}
+.hero-lit .d2{transition-delay:.3s}
+.hero-lit .d3{transition-delay:.46s}
+.hero-lit .d4{transition-delay:.62s}
+.hero-lit .d5{transition-delay:.8s}
+
+/* The photograph settles from a slow push-in as the words arrive */
+.js .hero-bg img{transform:scale(1.2)}
+.hero-lit .hero-bg img{
+  transform:scale(1.12);
+  transition:transform 2.6s cubic-bezier(.16,.7,.3,1);
+}
+
+/* ============================================================
+   FACTS BAR
+   ============================================================ */
+.facts{padding-block:clamp(40px,6vw,64px)}
+.facts-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:clamp(12px,1.6vw,18px);
+}
+.fact{
+  padding:clamp(20px,2.4vw,28px);
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.fact .val{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(1.7rem,1.3rem + 1.6vw,2.4rem);
+  font-weight:600;
+  line-height:1.05;
+  font-variant-numeric:tabular-nums;
+  color:var(--turquoise-light);
+}
+.fact .lbl{
+  font-size:var(--step--1);
+  color:var(--ink-soft);
+  line-height:1.4;
+}
+
+/* ============================================================
+   TWO-COLUMN SECTION
+   ============================================================ */
+.split{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(32px,5vw,72px);
+  align-items:center;
+}
+@media (max-width:900px){
+  .split{grid-template-columns:1fr}
+}
+
+.poem{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:clamp(1.5rem,1.2rem + 1.3vw,2.15rem);
+  font-style:italic;
+  line-height:1.3;
+  color:var(--ink);
+  margin:clamp(22px,3vw,32px) 0;
+  padding-left:clamp(18px,2.4vw,28px);
+  border-left:2px solid;
+  border-image:linear-gradient(180deg,var(--turquoise),var(--purple)) 1;
+}
+
+.prose > * + *{margin-top:1.05em}
+.prose p{color:var(--ink-soft)}
+
+.roomlist{
+  list-style:none;
+  margin:clamp(24px,3vw,34px) 0 0;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+}
+.roomlist li{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:16px;
+  padding:16px 0;
+  border-top:1px solid var(--glass-border);
+  align-items:start;
+}
+.roomlist li:first-child{border-top:0;padding-top:0}
+.roomlist .rl-name{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:.82rem;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.09em;
+  color:var(--turquoise-light);
+  padding-top:.28em;
+  white-space:nowrap;
+}
+.roomlist .rl-txt{color:var(--ink-soft);font-size:var(--step--1);line-height:1.55}
+@media (max-width:560px){
+  .roomlist li{grid-template-columns:1fr;gap:4px}
+  .roomlist .rl-name{padding-top:0}
+}
+
+.apt-figure img{width:100%;aspect-ratio:3/4;object-fit:cover}
+
+/* ============================================================
+   AMENITIES
+   ============================================================ */
+.amen-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(215px,1fr));
+  gap:clamp(12px,1.6vw,18px);
+}
+.amen{
+  padding:clamp(18px,2.2vw,24px);
+  display:flex;
+  gap:15px;
+  align-items:flex-start;
+  transition:transform .4s cubic-bezier(.2,.7,.3,1),background .4s;
+}
+.amen:hover{transform:translateY(-4px);background:var(--glass-strong)}
+.amen svg{
+  flex-shrink:0;
+  width:24px;height:24px;
+  stroke:var(--turquoise-light);
+  stroke-width:1.5;
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  margin-top:2px;
+}
+.amen .a-name{
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:600;
+  font-size:1rem;
+  margin-bottom:3px;
+  line-height:1.3;
+}
+.amen .a-note{font-size:var(--step--1);color:var(--ink-soft);line-height:1.45}
+
+/* ---- the full list, as small chips grouped by kind ---- */
+.amen-full{
+  margin-top:clamp(38px,5vw,60px);
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:clamp(24px,3vw,38px);
+}
+.amen-group-title{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.72rem;
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:.2em;
+  color:var(--turquoise-light);
+  margin:0 0 14px;
+  padding-bottom:10px;
+  border-bottom:1px solid var(--glass-border);
+}
+.amen-chips{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+}
+.amen-chips li{
+  display:inline-flex;
+  align-items:center;
+  gap:.45em;
+  padding:7px 13px;
+  border-radius:var(--radius-pill);
+  background:var(--glass);
+  border:1px solid var(--glass-border);
+  font-size:.86rem;
+  color:var(--ink-soft);
+  line-height:1.3;
+  transition:background .3s,border-color .3s,color .3s;
+}
+.amen-chips li::before{
+  content:'';
+  flex-shrink:0;
+  width:5px;height:5px;
+  border-radius:50%;
+  background:var(--turquoise);
+}
+.amen-chips li:hover{
+  background:var(--glass-strong);
+  border-color:var(--glass-border-strong);
+  color:var(--ink);
+}
+.amen-missing{
+  margin-top:clamp(28px,3.6vw,40px);
+  font-size:var(--step--1);
+  color:var(--ink-faint);
+  max-width:none;
+}
+
+/* ============================================================
+   TRUST — Airbnb standing, shown right at the top
+   ============================================================ */
+.favourite{
+  display:inline-flex;
+  align-items:center;
+  gap:clamp(12px,1.8vw,20px);
+  padding:10px clamp(16px,2vw,22px) 10px clamp(12px,1.6vw,16px);
+  border-radius:16px;
+  background:rgba(255,255,255,.12);
+  border:1px solid var(--glass-border-strong);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  box-shadow:0 10px 30px rgba(6,14,26,.3);
+}
+.favourite .laurel{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:.84rem;
+  font-weight:600;
+  line-height:1.15;
+  color:var(--ink);
+  white-space:nowrap;
+}
+.favourite .laurel svg{width:15px;height:26px;fill:var(--ink);flex-shrink:0}
+.favourite .laurel svg:last-child{transform:scaleX(-1)}
+.favourite .fav-sep{
+  width:1px;
+  align-self:stretch;
+  background:var(--glass-border-strong);
+}
+.favourite .fav-stat{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:2px;
+  line-height:1.1;
+}
+.favourite .fav-stat b{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:1.25rem;
+  font-weight:600;
+  font-variant-numeric:tabular-nums;
+  color:var(--ink);
+}
+.favourite .fav-stat .stars{display:flex;gap:1.5px}
+.favourite .fav-stat .stars svg{width:10px;height:10px;fill:var(--ink)}
+.favourite .fav-stat small{
+  font-size:.66rem;
+  color:var(--ink-soft);
+  white-space:nowrap;
+}
+@media (max-width:520px){
+  .favourite{width:100%;justify-content:space-between;gap:12px}
+  .favourite .laurel{font-size:.78rem;white-space:normal}
+}
+
+/* Badge row under the hero — the listing's headline facts */
+.trust{padding-block:clamp(26px,4vw,44px) 0}
+.trust-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+}
+.trust-row span{
+  display:inline-flex;
+  align-items:center;
+  gap:.5em;
+  padding:9px 16px;
+  min-height:42px;
+  border-radius:var(--radius-pill);
+  background:var(--glass);
+  border:1px solid var(--glass-border);
+  font-family:'Space Grotesk',sans-serif;
+  font-size:.88rem;
+  font-weight:500;
+  color:var(--ink);
+}
+.trust-row span svg{
+  width:16px;height:16px;flex-shrink:0;
+  stroke:var(--turquoise-light);stroke-width:1.6;fill:none;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+.trust-row .hi{
+  background:oklch(.52 .13 300 / .3);
+  border-color:oklch(.75 .12 300 / .42);
+}
+.trust-row .hi svg{stroke:var(--purple-light)}
+
+/* ============================================================
+   GALLERY
+   ============================================================ */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-auto-rows:clamp(130px,15vw,190px);
+  gap:clamp(10px,1.4vw,16px);
+}
+.gallery button{
+  position:relative;
+  padding:0;
+  border:1px solid var(--glass-border);
+  border-radius:var(--radius-img);
+  overflow:hidden;
+  background:var(--glass);
+  box-shadow:var(--shadow-soft);
+  cursor:zoom-in;
+  display:block;
+  width:100%;height:100%;
+  min-height:0;
+}
+.gallery img{
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform .9s cubic-bezier(.2,.7,.3,1);
+}
+.gallery button:hover img{transform:scale(1.06)}
+.gallery figcaption{
+  position:absolute;
+  inset:auto 0 0 0;
+  padding:34px 14px 12px;
+  background:linear-gradient(180deg,transparent,rgba(8,16,28,.86));
+  font-family:'Space Grotesk',sans-serif;
+  font-size:.82rem;
+  font-weight:500;
+  text-align:left;
+  color:var(--ink);
+  opacity:0;
+  transform:translateY(8px);
+  transition:opacity .4s,transform .4s;
+}
+.gallery button:hover figcaption,
+.gallery button:focus-visible figcaption{opacity:1;transform:none}
+
+.g-w2{grid-column:span 2}
+.g-h2{grid-row:span 2}
+
+@media (max-width:900px){
+  .gallery{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:520px){
+  .gallery{grid-template-columns:1fr;grid-auto-rows:200px}
+  .g-w2{grid-column:span 1}
+  .g-h2{grid-row:span 1}
+  .gallery figcaption{opacity:1;transform:none}
+}
+
+.gallery-cta{
+  display:flex;
+  justify-content:center;
+  margin-top:clamp(26px,3.4vw,40px);
+}
+
+/* ---- Lightbox ---- */
+/* A closed <dialog> is hidden by the browser's own stylesheet, but any author
+   `display` declaration overrides that — author styles beat user-agent styles
+   whatever the specificity. So the display value must be tied to [open], or the
+   closed dialog covers the whole page. */
+.lightbox{display:none}
+.lightbox[open]{
+  position:fixed;
+  inset:0;
+  z-index:120;
+  display:grid;
+  place-items:center;
+  padding:clamp(16px,4vw,48px);
+  background:rgba(8,14,24,.94);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border:0;
+  max-width:100vw;
+  max-height:100vh;
+  width:100vw;
+  height:100vh;
+}
+.lightbox::backdrop{background:rgba(8,14,24,.9)}
+.lightbox figure{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  align-items:center;
+  max-width:min(1100px,100%);
+}
+.lightbox img{
+  max-width:100%;
+  max-height:74vh;
+  width:auto;
+  border-radius:14px;
+  box-shadow:var(--shadow-deep);
+  object-fit:contain;
+}
+.lightbox figcaption{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:.95rem;
+  color:var(--ink-soft);
+  text-align:center;
+}
+.lb-close,.lb-prev,.lb-next{
+  position:fixed;
+  min-width:52px;min-height:52px;
+  display:inline-flex;align-items:center;justify-content:center;
+  border-radius:50%;
+  border:1px solid var(--glass-border-strong);
+  background:var(--glass-strong);
+  color:var(--ink);
+  cursor:pointer;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  transition:background .25s,transform .25s;
+}
+.lb-close:hover,.lb-prev:hover,.lb-next:hover{background:rgba(255,255,255,.2)}
+.lb-close{top:18px;right:18px;font-size:1.4rem;line-height:1}
+.lb-prev{left:14px;top:50%;transform:translateY(-50%)}
+.lb-next{right:14px;top:50%;transform:translateY(-50%)}
+.lb-prev:hover,.lb-next:hover{transform:translateY(-50%) scale(1.06)}
+.lb-prev svg,.lb-next svg{width:20px;height:20px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.lb-counter{
+  position:fixed;
+  bottom:20px;left:50%;
+  transform:translateX(-50%);
+  font-family:'JetBrains Mono',monospace;
+  font-size:.72rem;
+  letter-spacing:.14em;
+  color:var(--ink-faint);
+}
+
+/* ---- Full gallery view ---- */
+/* Same rule as the lightbox above: keep the box tied to [open]. */
+.allshots{display:none}
+.allshots[open]{
+  display:block;
+  position:fixed;
+  inset:0;
+  z-index:130;
+  width:100vw;
+  height:100vh;
+  max-width:100vw;
+  max-height:100vh;
+  margin:0;
+  padding:0;
+  border:0;
+  background:oklch(.24 .04 258);
+  color:var(--ink);
+  overflow:hidden;
+}
+.allshots::backdrop{background:rgba(6,12,22,.94)}
+.allshots-inner{
+  height:100%;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+}
+.allshots-head{
+  position:sticky;
+  top:0;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:16px var(--gutter);
+  background:oklch(.24 .04 258 / .92);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--glass-border);
+}
+.allshots-head h2{
+  font-size:clamp(1.3rem,1.1rem + .8vw,1.9rem);
+  margin:0;
+}
+.allshots-head .count{
+  display:block;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.68rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  margin-top:4px;
+}
+.allshots-close{
+  min-width:48px;min-height:48px;
+  display:inline-flex;align-items:center;justify-content:center;
+  gap:.5em;
+  padding:0 18px;
+  border-radius:var(--radius-pill);
+  border:1px solid var(--glass-border-strong);
+  background:var(--glass-strong);
+  color:var(--ink);
+  font-family:'Space Grotesk',sans-serif;
+  font-size:.92rem;
+  font-weight:500;
+  cursor:pointer;
+  transition:background .25s;
+  white-space:nowrap;
+}
+.allshots-close:hover{background:rgba(255,255,255,.2)}
+.allshots-grid{
+  padding:clamp(20px,3vw,36px) var(--gutter) clamp(60px,8vw,100px);
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:clamp(18px,2.4vw,30px);
+  align-items:start;
+}
+.allshots-grid figure{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.allshots-grid img{
+  width:100%;
+  border-radius:14px;
+  background:var(--glass);
+  box-shadow:var(--shadow-soft);
+}
+.allshots-grid figcaption{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:.92rem;
+  font-weight:500;
+  color:var(--ink-soft);
+  line-height:1.45;
+}
+
+/* ============================================================
+   QUOTE BANDS
+   ============================================================ */
+.quoteband{
+  position:relative;
+  padding-block:clamp(96px,16vw,190px);
+  overflow:hidden;
+  isolation:isolate;
+}
+.quoteband .qb-bg{
+  position:absolute;
+  /* Overhang top and bottom gives the photograph room to drift without
+     ever exposing an edge — keep it larger than the parallax amplitude. */
+  inset:-16% 0;
+  z-index:-2;
+  overflow:hidden;
+}
+.quoteband .qb-bg img{
+  width:100%;height:100%;
+  object-fit:cover;
+  will-change:transform;
+}
+.quoteband::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:linear-gradient(180deg,rgba(10,22,38,.86),rgba(14,20,42,.78));
+}
+.quoteband blockquote{
+  margin:0;
+  max-width:23ch;
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-style:italic;
+  font-weight:500;
+  font-size:clamp(1.75rem,1.2rem + 2.6vw,3.4rem);
+  line-height:1.16;
+  text-wrap:balance;
+  text-shadow:0 2px 26px rgba(6,16,30,.5);
+}
+.quoteband .qb-attr{
+  margin-top:clamp(22px,3vw,32px);
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.72rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--turquoise-light);
+  max-width:none;
+}
+.quoteband .qb-attr::before{
+  content:'';
+  width:clamp(28px,5vw,56px);
+  height:1px;
+  background:var(--turquoise-light);
+  flex-shrink:0;
+}
+.quoteband .qb-attr small{
+  display:block;
+  font-size:.68rem;
+  letter-spacing:.1em;
+  text-transform:none;
+  color:var(--ink-faint);
+  margin-top:3px;
+}
+.quoteband.align-end{text-align:right}
+.quoteband.align-end blockquote{margin-left:auto}
+.quoteband.align-end .qb-attr{justify-content:flex-end}
+@media (max-width:700px){
+  .quoteband.align-end{text-align:left}
+  .quoteband.align-end blockquote{margin-left:0}
+  .quoteband.align-end .qb-attr{justify-content:flex-start}
+}
+
+/* ============================================================
+   REGION
+   ============================================================ */
+.region-media{
+  display:grid;
+  grid-template-columns:1.35fr 1fr;
+  gap:clamp(12px,1.6vw,18px);
+  margin-bottom:clamp(32px,4.5vw,52px);
+}
+.region-media figure{border-radius:var(--radius-img);overflow:hidden;box-shadow:var(--shadow-soft)}
+.region-media img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/10}
+@media (max-width:760px){.region-media{grid-template-columns:1fr}}
+
+.dist-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(178px,1fr));
+  gap:clamp(10px,1.3vw,14px);
+}
+.dist{
+  padding:16px 18px;
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  transition:transform .4s cubic-bezier(.2,.7,.3,1),background .4s;
+}
+.dist:hover{transform:translateY(-3px);background:var(--glass-strong)}
+.dist .d-val{
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:600;
+  font-size:1.15rem;
+  font-variant-numeric:tabular-nums;
+  color:var(--turquoise-light);
+}
+.dist .d-lbl{font-size:var(--step--1);color:var(--ink-soft)}
+
+.chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:clamp(26px,3.4vw,38px);
+}
+.chip{
+  padding:9px 16px;
+  min-height:40px;
+  display:inline-flex;
+  align-items:center;
+  border-radius:var(--radius-pill);
+  background:var(--glass);
+  border:1px solid var(--glass-border);
+  font-size:var(--step--1);
+  color:var(--ink-soft);
+  transition:background .3s,border-color .3s,transform .3s;
+}
+.chip:hover{background:var(--glass-strong);border-color:var(--glass-border-strong);transform:translateY(-2px)}
+
+/* ============================================================
+   SEASONS
+   ============================================================ */
+.seasons{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:clamp(10px,1.4vw,16px);
+}
+.season{
+  position:relative;
+  border-radius:var(--radius-img);
+  overflow:hidden;
+  box-shadow:var(--shadow-soft);
+  isolation:isolate;
+}
+.season img{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  transition:transform .9s cubic-bezier(.2,.7,.3,1);
+}
+.season:hover img{transform:scale(1.06)}
+.season figcaption{
+  position:absolute;
+  inset:auto 0 0 0;
+  padding:44px 18px 16px;
+  background:linear-gradient(180deg,transparent,rgba(10,16,28,.88));
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:600;
+  font-size:1.02rem;
+}
+.season figcaption small{
+  display:block;
+  font-family:'Archivo',sans-serif;
+  font-weight:400;
+  font-size:.78rem;
+  color:var(--ink-soft);
+  margin-top:2px;
+  line-height:1.4;
+}
+@media (max-width:820px){
+  .seasons{grid-template-columns:repeat(2,1fr)}
+  .season img{aspect-ratio:4/3}
+}
+@media (max-width:460px){
+  .seasons{grid-template-columns:1fr}
+}
+
+.inline-quote{
+  margin-top:clamp(34px,4.5vw,54px);
+  padding-left:clamp(18px,2.4vw,28px);
+  border-left:2px solid;
+  border-image:linear-gradient(180deg,var(--turquoise),var(--purple)) 1;
+}
+.inline-quote blockquote{
+  margin:0;
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:clamp(1.35rem,1.15rem + 1vw,1.95rem);
+  line-height:1.28;
+  max-width:34ch;
+}
+.inline-quote cite{
+  display:block;
+  margin-top:12px;
+  font-style:normal;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.7rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--turquoise-light);
+}
+.inline-quote cite small{
+  display:block;
+  letter-spacing:.08em;
+  text-transform:none;
+  color:var(--ink-faint);
+  margin-top:3px;
+  font-size:.68rem;
+}
+
+/* ============================================================
+   TESTIMONIALS
+   ============================================================ */
+.rating-panel{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:clamp(18px,3vw,40px);
+  padding:clamp(22px,3vw,32px) clamp(24px,3.4vw,38px);
+  margin-bottom:clamp(26px,3.4vw,40px);
+}
+.rating-score{
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+}
+.rating-score .num{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(2.4rem,1.9rem + 2vw,3.4rem);
+  font-weight:600;
+  line-height:1;
+  color:var(--turquoise-light);
+  font-variant-numeric:tabular-nums;
+}
+.rating-score .of{font-size:var(--step--1);color:var(--ink-faint)}
+.rating-meta{display:flex;flex-direction:column;gap:6px}
+.rating-meta .stars{display:flex;gap:3px}
+.rating-meta .stars svg{width:17px;height:17px;fill:var(--turquoise-light)}
+.rating-meta .n{font-size:var(--step--1);color:var(--ink-soft)}
+.rating-badges{display:flex;flex-wrap:wrap;gap:8px;margin-left:auto}
+.rating-badges span{
+  display:inline-flex;
+  align-items:center;
+  gap:.45em;
+  padding:8px 15px;
+  min-height:40px;
+  border-radius:var(--radius-pill);
+  background:oklch(.52 .13 300 / .3);
+  border:1px solid oklch(.75 .12 300 / .4);
+  font-family:'Space Grotesk',sans-serif;
+  font-size:.84rem;
+  font-weight:600;
+}
+@media (max-width:700px){
+  .rating-badges{margin-left:0;width:100%}
+}
+
+.quotes{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:clamp(14px,1.8vw,20px);
+}
+.quote{
+  padding:clamp(24px,3vw,34px);
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  transition:transform .45s cubic-bezier(.2,.7,.3,1),background .45s;
+}
+.quote:hover{transform:translateY(-5px);background:var(--glass-strong)}
+.stars{display:flex;gap:3px}
+.stars svg{width:16px;height:16px;fill:var(--turquoise-light)}
+.quote blockquote{
+  margin:0;
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:clamp(1.15rem,1.05rem + .45vw,1.36rem);
+  line-height:1.4;
+  flex:1;
+}
+.quote cite{
+  font-style:normal;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:.85rem;
+  font-weight:500;
+  color:var(--ink-faint);
+  letter-spacing:.02em;
+}
+.quotes-source{
+  margin-top:clamp(20px,2.6vw,28px);
+  display:flex;
+  justify-content:center;
+}
+
+/* ============================================================
+   HOST
+   ============================================================ */
+.host{
+  display:grid;
+  grid-template-columns:minmax(0,270px) minmax(0,1fr);
+  gap:clamp(28px,4.5vw,60px);
+  align-items:start;
+}
+.portrait{
+  width:100%;
+  max-width:270px;
+  aspect-ratio:1;
+  border-radius:50%;
+  overflow:hidden;
+  border:1px solid var(--glass-border-strong);
+  background:var(--glass);
+  box-shadow:var(--shadow-soft);
+}
+.portrait img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center 20%;
+}
+@media (max-width:760px){
+  .host{grid-template-columns:1fr;justify-items:start;gap:26px}
+}
+.host-voice{
+  margin:clamp(20px,2.6vw,28px) 0;
+  padding-left:clamp(18px,2.4vw,28px);
+  border-left:2px solid;
+  border-image:linear-gradient(180deg,var(--turquoise),var(--purple)) 1;
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:clamp(1.3rem,1.12rem + .9vw,1.8rem);
+  line-height:1.3;
+  color:var(--ink);
+  max-width:38ch;
+}
+.busch{
+  margin-top:clamp(24px,3vw,32px);
+  padding:clamp(20px,2.6vw,28px);
+  border-radius:var(--radius-card);
+  background:var(--glass);
+  border:1px solid var(--glass-border);
+}
+.busch p{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:clamp(1.12rem,1.02rem + .42vw,1.36rem);
+  line-height:1.44;
+  margin:0;
+  max-width:none;
+}
+.busch cite{
+  display:block;
+  margin-top:10px;
+  font-style:normal;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.7rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+}
+
+/* ============================================================
+   BOOKING
+   ============================================================ */
+.booking-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(16px,2.2vw,26px);
+  align-items:start;
+}
+@media (max-width:900px){.booking-grid{grid-template-columns:1fr}}
+
+.pricecard{
+  padding:clamp(26px,3.2vw,36px);
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+.price-figure{
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.price-figure .from{
+  color:var(--ink-faint);
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.72rem;
+}
+.price-figure .amount{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(2.2rem,1.7rem + 2vw,3.1rem);
+  font-weight:600;
+  line-height:1;
+  color:var(--turquoise-light);
+  font-variant-numeric:tabular-nums;
+}
+.price-figure .unit{font-size:var(--step--1);color:var(--ink-soft)}
+
+.price-notes{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+.price-notes li{
+  display:flex;
+  gap:11px;
+  font-size:var(--step--1);
+  color:var(--ink-soft);
+  align-items:flex-start;
+}
+.price-notes li::before{
+  content:'';
+  flex-shrink:0;
+  width:6px;height:6px;
+  margin-top:.55em;
+  border-radius:50%;
+  background:var(--turquoise);
+}
+
+form.enquiry{
+  padding:clamp(26px,3.2vw,36px);
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+.field{display:flex;flex-direction:column;gap:7px}
+.field label{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:.82rem;
+  font-weight:500;
+  letter-spacing:.03em;
+  color:var(--ink-soft);
+}
+.field input,.field textarea{
+  font-family:inherit;
+  font-size:1rem;
+  color:var(--ink);
+  background:rgba(255,255,255,.06);
+  border:1px solid var(--glass-border);
+  border-radius:12px;
+  padding:13px 15px;
+  min-height:48px;
+  width:100%;
+  transition:border-color .25s,background .25s;
+}
+.field textarea{min-height:110px;resize:vertical;line-height:1.5}
+.field input:hover,.field textarea:hover{border-color:var(--glass-border-strong)}
+.field input:focus,.field textarea:focus{
+  border-color:var(--turquoise);
+  background:rgba(255,255,255,.09);
+}
+.field input::placeholder,.field textarea::placeholder{color:var(--ink-faint)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:480px){.field-row{grid-template-columns:1fr}}
+.form-note{font-size:.8rem;color:var(--ink-faint);line-height:1.55;max-width:none}
+
+/* ============================================================
+   FLOATING BOOKING DOCK — booking actions only
+   ============================================================ */
+.dock{
+  position:fixed;
+  right:clamp(14px,2.4vw,26px);
+  bottom:clamp(14px,2.4vw,26px);
+  z-index:80;
+  display:flex;
+  gap:10px;
+  align-items:center;
+  padding:8px;
+  border-radius:var(--radius-pill);
+  background:oklch(.26 .05 258 / .84);
+  border:1px solid var(--glass-border-strong);
+  backdrop-filter:blur(18px) saturate(1.3);
+  -webkit-backdrop-filter:blur(18px) saturate(1.3);
+  box-shadow:0 16px 44px rgba(6,12,26,.45);
+  opacity:0;
+  transform:translateY(18px) scale(.96);
+  pointer-events:none;
+  transition:opacity .45s cubic-bezier(.2,.7,.3,1),transform .45s cubic-bezier(.2,.7,.3,1);
+}
+.dock.show{opacity:1;transform:none;pointer-events:auto}
+.dock .btn{min-height:46px;font-size:.92rem;padding:.6em 1.3em}
+
+@media (max-width:1000px){
+  .dock{
+    left:clamp(10px,3vw,16px);
+    right:clamp(10px,3vw,16px);
+    bottom:calc(72px + env(safe-area-inset-bottom));
+  }
+  .dock .btn{flex:1;padding:.6em .9em}
+}
+@media (max-width:400px){
+  .dock .btn{font-size:.84rem}
+  .dock .btn .lbl-long{display:none}
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq{display:flex;flex-direction:column;gap:10px;max-width:820px}
+.faq details{
+  border-radius:14px;
+  background:var(--glass);
+  border:1px solid var(--glass-border);
+  overflow:hidden;
+  transition:border-color .25s,background .25s;
+}
+.faq details[open]{border-color:var(--glass-border-strong);background:var(--glass-strong)}
+.faq summary{
+  cursor:pointer;
+  list-style:none;
+  padding:18px 22px;
+  min-height:56px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:500;
+  font-size:1.02rem;
+  line-height:1.35;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:'';
+  flex-shrink:0;
+  width:11px;height:11px;
+  border-right:1.6px solid var(--turquoise-light);
+  border-bottom:1.6px solid var(--turquoise-light);
+  transform:rotate(45deg) translateY(-2px);
+  transition:transform .3s cubic-bezier(.2,.7,.3,1);
+}
+.faq details[open] summary::after{transform:rotate(225deg) translateY(-2px)}
+.faq .answer{
+  padding:0 22px 20px;
+  color:var(--ink-soft);
+  font-size:var(--step--1);
+  line-height:1.6;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer.site{
+  position:relative;
+  z-index:1;
+  background:var(--anthracite);
+  padding-block:clamp(56px,8vw,88px) clamp(32px,5vw,48px);
+  margin-top:clamp(48px,7vw,90px);
+}
+/* Below 1000px the nav becomes a fixed bottom bar and the dock sits above it;
+   the footer is the last thing that scrolls under both, so the clearance has to
+   live here. Must come after the padding-block above or that shorthand wins. */
+@media (max-width:1000px){
+  footer.site{padding-bottom:calc(150px + env(safe-area-inset-bottom))}
+}
+.foot-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);
+  gap:clamp(32px,5vw,64px);
+  align-items:start;
+}
+@media (max-width:820px){.foot-grid{grid-template-columns:1fr}}
+
+.contact-list{
+  list-style:none;
+  padding:0;
+  margin:clamp(22px,3vw,30px) 0 0;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.contact-list li{display:flex;gap:14px;align-items:flex-start}
+.contact-list svg{
+  flex-shrink:0;width:19px;height:19px;margin-top:14px;
+  stroke:var(--turquoise-light);stroke-width:1.5;fill:none;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+.contact-list a{
+  color:var(--ink);
+  text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.2);
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+}
+.contact-list a:hover{border-color:var(--turquoise-light)}
+.contact-list .c-lbl{
+  display:block;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.68rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  margin-bottom:2px;
+}
+
+.mapframe{
+  border-radius:var(--radius-img);
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.04);
+  aspect-ratio:16/11;
+}
+.mapframe iframe{width:100%;height:100%;border:0;display:block}
+
+.foot-bottom{
+  margin-top:clamp(40px,5.5vw,64px);
+  padding-top:24px;
+  border-top:1px solid rgba(255,255,255,.1);
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px 28px;
+  align-items:center;
+  justify-content:space-between;
+  font-size:.8rem;
+  color:var(--ink-faint);
+}
+.foot-bottom nav{display:flex;flex-wrap:wrap;gap:8px 22px}
+.foot-bottom a{color:var(--ink-faint);text-decoration:none;padding:6px 0;min-height:44px;display:inline-flex;align-items:center}
+.foot-bottom a:hover{color:var(--ink)}
+
+/* ============================================================
+   MOTION
+   ============================================================ */
+.js .reveal{
+  opacity:0;
+  transform:translateY(26px);
+  transition:opacity .9s cubic-bezier(.22,.68,.28,1),transform .9s cubic-bezier(.22,.68,.28,1);
+}
+.js .reveal.in{opacity:1;transform:none}
+
+.js .reveal-zoom img{
+  transform:scale(1.07);
+  transition:transform 1.3s cubic-bezier(.2,.7,.3,1);
+}
+.js .reveal-zoom.in img{transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+  }
+  .js .reveal{opacity:1;transform:none}
+  .js .reveal-zoom img{transform:none}
+  .js .hero-anim{opacity:1;transform:none}
+  .js .hero-bg img{transform:scale(1.12)}
+  .aurora-field span,.hero-glow span{animation:none}
+}
+</style>
+</head>
+
+<body>
+<a class="skip" href="#main" data-i18n="skip">Zum Inhalt springen</a>
+
+<div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+
+<div class="aurora-field" aria-hidden="true">
+  <span class="g1"></span><span class="g2"></span><span class="g3"></span>
+</div>
+
+<header class="topbar" id="topbar">
+  <div class="shell">
+    <a class="brand" href="#top">B.E<span>@</span>H.O.M.E</a>
+    <nav class="navpill" aria-label="Hauptnavigation" id="mainnav">
+      <a href="#wohnung" data-i18n="nav.apartment">Wohnung</a>
+      <a href="#galerie" data-i18n="nav.gallery">Galerie</a>
+      <a href="#region" data-i18n="nav.region">Region</a>
+      <a href="#stimmen" data-i18n="nav.voices">Stimmen</a>
+      <a href="#kontakt" data-i18n="nav.contact">Kontakt</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn btn-primary nav-cta" href="#buchung" data-i18n="nav.cta">Verfügbarkeit</a>
+      <div class="langswitch" role="group" aria-label="Sprache / Language">
+        <button type="button" data-lang="de" aria-pressed="true">DE</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="top">
+    <div class="hero-bg">
+      <!-- FOTO: Attersee-Panorama, Wikimedia Commons CC BY-SA 4.0. Durch eigene Panorama-Aufnahme ersetzbar. -->
+      <img id="heroImg" src="images/hero-attersee-panorama.jpg" width="3840" height="1839"
+           alt="Weiter Blick über den türkisfarbenen Attersee auf die Berge des Salzkammerguts"
+           fetchpriority="high" decoding="async">
+    </div>
+    <div class="hero-glow" aria-hidden="true"><span class="hg1"></span><span class="hg2"></span></div>
+
+    <div class="shell">
+      <span class="eyebrow hero-anim d1" data-i18n="hero.eyebrow">Timelkam · Attersee · Salzkammergut</span>
+      <h1 class="hero-anim d2" data-i18n-html="hero.title">Zur Ruhe kommen.<br><em>Einfach sein.</em></h1>
+      <p class="lede hero-anim d3" data-i18n="hero.lede">Großzügige Ferienwohnung mit überwältigendem Panoramablick — dem Alltag entfliehen, wenige Minuten vom Attersee.</p>
+
+      <div class="hero-rating hero-anim d4">
+        <div class="favourite">
+          <span class="laurel">
+            <svg viewBox="0 0 12 26" aria-hidden="true"><path d="M9.6 1.2C6 3 3.4 6.4 2.6 10.4c-.8 4 .3 8.2 3 11.4l.6.7 1.5-1.3-.6-.7c-2.3-2.7-3.2-6.3-2.5-9.8.7-3.4 2.9-6.3 6-7.9l-.9-1.6zM3.9 6.3c-1.3.2-2.5.9-3.3 2 1.3.3 2.7.1 3.8-.6l-.5-1.4zM2.4 11c-1.2.5-2.1 1.5-2.4 2.8 1.3-.1 2.5-.7 3.3-1.7l-.9-1.1zM3.1 15.9c-1 .8-1.6 2-1.6 3.3 1.2-.5 2.1-1.4 2.6-2.6l-1-.7z"/></svg>
+            <span data-i18n-html="hero.favourite">Gäste-<br>Favorit</span>
+            <svg viewBox="0 0 12 26" aria-hidden="true"><path d="M9.6 1.2C6 3 3.4 6.4 2.6 10.4c-.8 4 .3 8.2 3 11.4l.6.7 1.5-1.3-.6-.7c-2.3-2.7-3.2-6.3-2.5-9.8.7-3.4 2.9-6.3 6-7.9l-.9-1.6zM3.9 6.3c-1.3.2-2.5.9-3.3 2 1.3.3 2.7.1 3.8-.6l-.5-1.4zM2.4 11c-1.2.5-2.1 1.5-2.4 2.8 1.3-.1 2.5-.7 3.3-1.7l-.9-1.1zM3.1 15.9c-1 .8-1.6 2-1.6 3.3 1.2-.5 2.1-1.4 2.6-2.6l-1-.7z"/></svg>
+          </span>
+          <i class="fav-sep" aria-hidden="true"></i>
+          <span class="fav-stat">
+            <b>4,98</b>
+            <span class="stars" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+            </span>
+          </span>
+          <i class="fav-sep" aria-hidden="true"></i>
+          <span class="fav-stat">
+            <b>56</b>
+            <small data-i18n="hero.reviews">Bewertungen</small>
+          </span>
+        </div>
+        <span class="sr-note" data-i18n="hero.ratingSr">Laut Gästen eine der beliebtesten Unterkünfte auf Airbnb — bewertet mit 4,98 von 5 Sternen aus 56 Bewertungen.</span>
+      </div>
+
+      <div class="hero-actions hero-anim d5">
+        <a class="btn btn-primary" href="#buchung" data-i18n="hero.ctaPrimary">Verfügbarkeit anfragen</a>
+        <button type="button" class="btn btn-ghost js-open-all">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+          <span data-i18n="hero.ctaGallery">Alle Bilder ansehen</span>
+        </button>
+        <span class="badge" data-i18n="hero.badge">September noch verfügbar</span>
+      </div>
+    </div>
+
+    <p class="credit-line hero-credit hero-anim d5">
+      <span data-i18n="credit.hero">Foto: Attersee-Panorama vom Kleinen Schoberstein · Tigerente</span>,
+      <a href="https://commons.wikimedia.org/wiki/File:Attersee_Panorama_20210605.jpg" rel="noopener">Wikimedia Commons</a>,
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license noopener">CC BY-SA 4.0</a>
+    </p>
+  </section>
+
+  <!-- ================= TRUST STRIP ================= -->
+  <section class="trust" aria-label="Auszeichnungen und Eckdaten">
+    <div class="shell">
+      <div class="trust-row reveal">
+        <span class="hi">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v3M5.5 5.5l2 2M3 12h3M18.5 5.5l-2 2M21 12h-3"/><path d="M12 10.5 13.4 14l3.6.4-2.7 2.4.8 3.5-3.1-1.8-3.1 1.8.8-3.5L7 14.4l3.6-.4z"/></svg>
+          <span data-i18n="trust.clean">Blitzsauber</span>
+        </span>
+        <span class="hi">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 9 8.6 2 9.5l5.2 4.8L5.8 21 12 17.7 18.2 21l-1.4-6.7L22 9.5l-7-.9z"/></svg>
+          <span data-i18n="trust.superhost">Gäste-Favorit &amp; Superhost</span>
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M5 10V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3M3 18h18M6 18v2M18 18v2"/></svg>
+          <span data-i18n="trust.bedrooms">2 Schlafzimmer</span>
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 5.3a3.2 3.2 0 0 1 0 5.4M18.2 20a6.5 6.5 0 0 0-3.2-5.6"/></svg>
+          <span data-i18n="trust.guests">bis 5 Gäste</span>
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V8l9-5 9 5v13"/><path d="M3 13h18M8 21v-8M16 21v-8"/></svg>
+          <span data-i18n="trust.outdoor">Balkon &amp; Garten</span>
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"/><path d="M14 12h7M18 9l3 3-3 3"/></svg>
+          <span data-i18n="trust.entrance">Eigener Eingang</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FACTS ================= -->
+  <section class="facts" aria-label="Auf einen Blick">
+    <div class="shell">
+      <div class="facts-grid">
+        <div class="fact card reveal">
+          <span class="val"><span class="count" data-to="5">5</span></span>
+          <span class="lbl" data-i18n="facts.guests">Gäste in 2 Schlafzimmern und 3 Betten</span>
+        </div>
+        <div class="fact card reveal">
+          <span class="val" data-i18n="facts.outdoorVal">Balkon</span>
+          <span class="lbl" data-i18n="facts.outdoor">Mit eigenem Gartenbereich, von Küche und Wohnzimmer begehbar</span>
+        </div>
+        <div class="fact card reveal">
+          <span class="val"><span class="count" data-to="3">3</span>&nbsp;km</span>
+          <span class="lbl" data-i18n="facts.town">Zur Bezirksstadt Vöcklabruck</span>
+        </div>
+        <div class="fact card reveal">
+          <span class="val"><span class="count" data-to="50">50</span>&nbsp;min</span>
+          <span class="lbl" data-i18n="facts.cities">Nach Salzburg, Linz und Bad Ischl</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= APARTMENT ================= -->
+  <section id="wohnung">
+    <div class="shell">
+      <div class="split">
+        <div class="prose reveal">
+          <span class="eyebrow" data-i18n="apt.eyebrow">Die Wohnung</span>
+          <h2 data-i18n-html="apt.title">Ankommen. Eintreten.<br><em>Sich zuhause fühlen.</em></h2>
+          <p class="poem" data-i18n="apt.poem">Zur Ruhe kommen. Dem Alltag entfliehen. Hier und jetzt. Einfach sein.</p>
+          <p data-i18n="apt.body">Die ganze Wohnung steht Ihnen zur alleinigen Nutzung zur Verfügung — die oberste Etage eines Privathauses, erreichbar über eine Außenstiege mit eigenem Eingang. Eingerichtet mit liebevollen Details, ruhig gelegen, mit Blick ins Grüne.</p>
+          <p data-i18n="apt.body2">Der Check-in erfolgt eigenständig über eine Schlüsselbox. Handtücher und Bettwäsche liegen bereit, für den ersten Morgen auch eine kleine Auswahl an Tee und Kaffeepads.</p>
+        </div>
+
+        <figure class="apt-figure framed reveal reveal-zoom">
+          <!-- FOTO: Wohn-Schlafraum mit Tagesbett -->
+          <img src="images/wohnzimmer-bett.jpg" width="1200" height="1600" loading="lazy" decoding="async"
+               alt="Wohn-Schlafraum mit hochwertigem Tagesbett und Blick zum Fenster">
+        </figure>
+      </div>
+
+      <div class="reveal">
+        <ul class="roomlist">
+          <li>
+            <span class="rl-name" data-i18n="apt.r1n">Schlafzimmer 1</span>
+            <span class="rl-txt" data-i18n="apt.r1t">Großzügig, mit Kingsize-Doppelbett. Ein Babybett steht auf Wunsch bereit.</span>
+          </li>
+          <li>
+            <span class="rl-name" data-i18n="apt.r2n">Schlafzimmer 2</span>
+            <span class="rl-txt" data-i18n="apt.r2t">Kleiner, mit Boxspringbett von 140 cm Breite.</span>
+          </li>
+          <li>
+            <span class="rl-name" data-i18n="apt.r3n">Wohn-Schlafraum</span>
+            <span class="rl-txt" data-i18n="apt.r3t">Flexibel nutzbar, mit Ultra-HD Smart TV, Ausziehcouch und zusätzlichem Tagesbett.</span>
+          </li>
+          <li>
+            <span class="rl-name" data-i18n="apt.r4n">Küche</span>
+            <span class="rl-txt" data-i18n="apt.r4t">Vollwertig ausgestattet, mit Essgruppe und Zugang zum Balkon: Kühl-Gefrierschrank, Backofen, Geschirrspüler, Kaffeemaschine, Wasserkocher, Toaster und Plattengrill.</span>
+          </li>
+          <li>
+            <span class="rl-name" data-i18n="apt.r5n">Bad &amp; WC</span>
+            <span class="rl-txt" data-i18n="apt.r5t">Waschtisch, Dusche, Badewanne und Föhn. Das WC liegt separat.</span>
+          </li>
+          <li>
+            <span class="rl-name" data-i18n="apt.r6n">Balkon &amp; Garten</span>
+            <span class="rl-txt" data-i18n="apt.r6t">Eigener Balkon mit Blick ins Grüne, im Garten ein gemütlicher Sitz- und Essbereich.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= QUOTE BAND — Omar Khayyam ================= -->
+  <section class="quoteband" aria-label="Zitat von Omar Khayyam">
+    <div class="qb-bg" aria-hidden="true">
+      <!-- FOTO: Herbstsonne durch die Bäume, Blick vom zweiten Schlafzimmer -->
+      <img class="qb-parallax" src="images/herbstsonne.jpg" width="1200" height="1007" loading="lazy" decoding="async" alt="">
+    </div>
+    <div class="shell">
+      <blockquote class="reveal" data-i18n="q.khayyam">Das Leben ist eine Reise — und wer reist, lebt zweimal.</blockquote>
+      <p class="qb-attr reveal">
+        <span>Omar Khayyam
+          <small data-i18n="q.khayyamNote">Persischer Dichter und Gelehrter, 1048–1131</small>
+        </span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= AMENITIES ================= -->
+  <section id="ausstattung">
+    <div class="shell">
+      <span class="eyebrow reveal" data-i18n="amen.eyebrow">Ausstattung</span>
+      <h2 class="reveal" data-i18n-html="amen.title">Das bietet dir <em>die Unterkunft.</em></h2>
+      <p class="lede reveal" style="margin:clamp(18px,2.4vw,26px) 0 clamp(30px,4vw,46px)" data-i18n="amen.lede">51 Ausstattungsmerkmale — hier zuerst die wichtigsten, darunter die vollständige Liste.</p>
+      <div class="amen-grid">
+
+        <div class="amen card reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 9v12"/></svg>
+          <div><div class="a-name" data-i18n="amen.a1n">Komplette Küche</div><div class="a-note" data-i18n="amen.a1t">Backofen, Geschirrspüler, Kühl-Gefrierschrank, Kaffeemaschine, Toaster, Plattengrill</div></div>
+        </div>
+
+        <div class="amen card reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 16a5.5 5.5 0 0 1 7 0"/><circle cx="12" cy="19.5" r=".8" fill="currentColor" stroke="none"/><path d="M1.8 9a15 15 0 0 1 20.4 0"/></svg>
+          <div><div class="a-name" data-i18n="amen.a2n">WLAN</div><div class="a-note" data-i18n="amen.a2t">Im gesamten Wohnbereich</div></div>
+        </div>
+
+        <div class="amen card reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="13" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
+          <div><div class="a-name" data-i18n="amen.a3n">Ultra-HD Smart TV</div><div class="a-note" data-i18n="amen.a3t">Im Wohn-Schlafraum</div></div>
+        </div>
+
+        <div class="amen card reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V8l9-5 9 5v13"/><path d="M3 13h18M8 21v-8M16 21v-8"/></svg>
+          <div><div class="a-name" data-i18n="amen.a4n">Balkon mit Talblick</div><div class="a-note" data-i18n="amen.a4t">Von Küche und Wohnzimmer begehbar</div></div>
+        </div>
+
+        <div class="amen card reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21c0-5 0-8 0-8"/><path d="M12 13c-4 0-7-2.5-7-6 3.5 0 7 2 7 6z"/><path d="M12 13c4 0 7-2.5 7-6-3.5 0-7 2-7 6z"/></svg>
+          <div><div class="a-name" data-i18n="amen.a5n">Eigener Garten</div><div class="a-note" data-i18n="amen.a5t">Mit Sitz- und Essbereich</div></div>
+        </div>
+
+        <div class="amen card reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17v-5l2-5h12l2 5v5"/><path d="M4 17h16M6.5 17v2M17.5 17v2"/><circle cx="7.5" cy="12.5" r="1.2"/><circle cx="16.5" cy="12.5" r="1.2"/></svg>
+          <div><div class="a-name" data-i18n="amen.a6n">Kostenloser Parkplatz</div><div class="a-note" data-i18n="amen.a6t">Entlang des Hauses, auf dem Grundstück</div></div>
+        </div>
+
+        <div class="amen card reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.5" r="1.2"/></svg>
+          <div><div class="a-name" data-i18n="amen.a7n">Eigenständiger Check-in</div><div class="a-note" data-i18n="amen.a7t">Per Schlüsselbox, ohne Wartezeit</div></div>
+        </div>
+
+        <div class="amen card reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="4.5"/><path d="M17 7h.01"/></svg>
+          <div><div class="a-name" data-i18n="amen.a8n">Waschmaschine</div><div class="a-note" data-i18n="amen.a8t">Kostenlos, Bügeleisen vorhanden</div></div>
+        </div>
+
+        <div class="amen card reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M7 12V6a2 2 0 0 1 2-2h1"/><path d="M6 21l1-2M18 21l-1-2"/></svg>
+          <div><div class="a-name" data-i18n="amen.a9n">Badewanne &amp; Dusche</div><div class="a-note" data-i18n="amen.a9t">Getrenntes WC, Handtücher und Föhn</div></div>
+        </div>
+
+        <div class="amen card reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M7 21h10M9.5 17l-.5 4M14.5 17l.5 4"/></svg>
+          <div><div class="a-name" data-i18n="amen.a10n">Spezieller Arbeitsplatz</div><div class="a-note" data-i18n="amen.a10t">Auch fürs Arbeiten unterwegs vorgesorgt</div></div>
+        </div>
+
+      </div>
+
+      <div class="amen-full">
+        <div class="amen-group reveal">
+          <h3 class="amen-group-title" data-i18n="am.gView">Ausblick</h3>
+          <ul class="amen-chips">
+            <li data-i18n="am.v1">Blick aufs Tal</li>
+            <li data-i18n="am.v2">Blick in den Garten</li>
+          </ul>
+        </div>
+        <div class="amen-group reveal">
+          <h3 class="amen-group-title" data-i18n="am.gBath">Bad</h3>
+          <ul class="amen-chips">
+            <li data-i18n="am.b1">Badewanne</li>
+            <li data-i18n="am.b2">Föhn</li>
+            <li data-i18n="am.b3">Reinigungsprodukte</li>
+            <li data-i18n="am.b4">Seife und Duschgel</li>
+            <li data-i18n="am.b5">Warmwasser</li>
+          </ul>
+        </div>
+        <div class="amen-group reveal">
+          <h3 class="amen-group-title" data-i18n="am.gSleep">Schlafen &amp; Wäsche</h3>
+          <ul class="amen-chips">
+            <li data-i18n="am.s1">Waschmaschine, kostenlos</li>
+            <li data-i18n="am.s2">Handtücher, Bettwäsche, Seife, WC-Papier</li>
+            <li data-i18n="am.s3">Kleiderbügel</li>
+            <li data-i18n="am.s4">Bettwäsche</li>
+            <li data-i18n="am.s5">Zusätzliche Kissen und Decken</li>
+            <li data-i18n="am.s6">Fensterverdunklung</li>
+            <li data-i18n="am.s7">Bügeleisen</li>
+            <li data-i18n="am.s8">Wäscheständer</li>
+            <li data-i18n="am.s9">Aufbewahrung für Kleidung</li>
+          </ul>
+        </div>
+        <div class="amen-group reveal">
+          <h3 class="amen-group-title" data-i18n="am.gFam">Für Familien</h3>
+          <ul class="amen-chips">
+            <li data-i18n="am.f1">Reisebett für Kinder</li>
+            <li data-i18n="am.f2">Hochstuhl</li>
+          </ul>
+        </div>
+        <div class="amen-group reveal">
+          <h3 class="amen-group-title" data-i18n="am.gKit">Küche &amp; Essen</h3>
+          <ul class="amen-chips">
+            <li data-i18n="am.k1">Küche</li>
+            <li data-i18n="am.k2">Kühlschrank</li>
+            <li data-i18n="am.k3">Gefrierschrank</li>
+            <li data-i18n="am.k4">Herd</li>
+            <li data-i18n="am.k5">Backofen</li>
+            <li data-i18n="am.k6">Geschirrspüler</li>
+            <li data-i18n="am.k7">Kaffeemaschine</li>
+            <li data-i18n="am.k8">Kaffee</li>
+            <li data-i18n="am.k9">Wasserkocher</li>
+            <li data-i18n="am.k10">Toaster</li>
+            <li data-i18n="am.k11">Standmixer</li>
+            <li data-i18n="am.k12">Backblech</li>
+            <li data-i18n="am.k13">Töpfe, Pfannen, Öl, Salz und Pfeffer</li>
+            <li data-i18n="am.k14">Geschirr und Besteck</li>
+            <li data-i18n="am.k15">Weingläser</li>
+            <li data-i18n="am.k16">Esstisch</li>
+            <li data-i18n="am.k17">Grillbesteck</li>
+          </ul>
+        </div>
+        <div class="amen-group reveal">
+          <h3 class="amen-group-title" data-i18n="am.gOut">Außenbereich &amp; Zugang</h3>
+          <ul class="amen-chips">
+            <li data-i18n="am.o1">Privater Eingang</li>
+            <li data-i18n="am.o2">Privater Balkon</li>
+            <li data-i18n="am.o3">Garten, nicht komplett umzäunt</li>
+            <li data-i18n="am.o4">Gartenmöbel</li>
+            <li data-i18n="am.o5">Essbereich im Freien</li>
+            <li data-i18n="am.o6">Grill</li>
+            <li data-i18n="am.o7">Feuerstelle</li>
+            <li data-i18n="am.o8">Kostenloser Parkplatz am Grundstück</li>
+          </ul>
+        </div>
+        <div class="amen-group reveal">
+          <h3 class="amen-group-title" data-i18n="am.gComf">Komfort &amp; Sicherheit</h3>
+          <ul class="amen-chips">
+            <li data-i18n="am.c1">Heizung</li>
+            <li data-i18n="am.c2">WLAN</li>
+            <li data-i18n="am.c3">Spezieller Arbeitsplatz</li>
+            <li data-i18n="am.c4">Rauchmelder</li>
+            <li data-i18n="am.c5">Feuerlöscher</li>
+          </ul>
+        </div>
+        <div class="amen-group reveal">
+          <h3 class="amen-group-title" data-i18n="am.gServ">Services</h3>
+          <ul class="amen-chips">
+            <li data-i18n="am.x1">Eigenständiger Check-in</li>
+            <li data-i18n="am.x2">Schlüsselbox</li>
+            <li data-i18n="am.x3">Langzeitaufenthalte ab 28 Tagen</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="amen-missing reveal" data-i18n="amen.missing">Nicht vorhanden: Klimaanlage, Wäschetrockner und Kohlenmonoxidmelder. Überwachungskameras gibt es auf dem Grundstück keine.</p>
+    </div>
+  </section>
+
+  <!-- ================= GALLERY ================= -->
+  <section id="galerie">
+    <div class="shell">
+      <span class="eyebrow reveal" data-i18n="gal.eyebrow">Galerie</span>
+      <h2 class="reveal" data-i18n-html="gal.title">Ein Blick <em>hinein.</em></h2>
+      <p class="lede reveal" style="margin:clamp(18px,2.4vw,26px) 0 clamp(30px,4vw,46px)" data-i18n="gal.lede">Zum Vergrößern auf ein Bild tippen — oder alle Aufnahmen auf einmal ansehen.</p>
+
+      <div class="gallery reveal" id="gallery">
+        <button type="button" class="g-w2 g-h2">
+          <img src="images/wohnzimmer.jpg" width="1200" height="900" loading="lazy" decoding="async"
+               alt="Wohnzimmer mit großer Eckcouch, Lesesessel und Zugang zum Balkon">
+          <figcaption data-i18n="gal.c1">Das Wohnzimmer — gemütlich und großzügig</figcaption>
+        </button>
+        <button type="button">
+          <img src="images/kueche.jpg" width="1200" height="900" loading="lazy" decoding="async"
+               alt="Vollausgestattete Küche mit rundem Esstisch und gedeckten Plätzen">
+          <figcaption data-i18n="gal.c2">Küche mit Essplatz und Zugang zum Balkon</figcaption>
+        </button>
+        <button type="button">
+          <img src="images/schlafzimmer.jpg" width="1200" height="900" loading="lazy" decoding="async"
+               alt="Schlafzimmer mit Doppelbett, warmen Nachttischlampen und Dachschräge">
+          <figcaption data-i18n="gal.c3">Schlafzimmer mit Kingsize-Doppelbett</figcaption>
+        </button>
+        <button type="button">
+          <img src="images/badezimmer.jpg" width="1200" height="900" loading="lazy" decoding="async"
+               alt="Badezimmer mit Eck-Badewanne, Dusche und großem Waschtisch">
+          <figcaption data-i18n="gal.c4">Badezimmer mit Eck-Badewanne</figcaption>
+        </button>
+        <button type="button">
+          <img src="images/einzelzimmer.jpg" width="1200" height="1600" loading="lazy" decoding="async"
+               alt="Zweites Schlafzimmer mit Boxspringbett von 140 Zentimetern Breite">
+          <figcaption data-i18n="gal.c5">Zweites Schlafzimmer, Boxspringbett 140 cm</figcaption>
+        </button>
+        <button type="button" class="g-h2">
+          <img src="images/sonnenuntergang-balkon.jpg" width="1200" height="1313" loading="lazy" decoding="async"
+               alt="Sonnenuntergang über den Hügeln, gesehen vom Balkon der Wohnung">
+          <figcaption data-i18n="gal.c6">Sonnenuntergang vom Balkon</figcaption>
+        </button>
+        <button type="button" class="g-w2">
+          <img src="images/gartenplatz.jpg" width="1200" height="957" loading="lazy" decoding="async"
+               alt="Privater Gartenplatz mit Sitzgruppe, Holzterrasse und blühendem Rhododendron">
+          <figcaption data-i18n="gal.c7">Der private Gartenplatz</figcaption>
+        </button>
+        <button type="button">
+          <img src="images/balkon-aussicht.jpg" width="1200" height="900" loading="lazy" decoding="async"
+               alt="Freier Blick vom Balkon über Wiesen und Hügel">
+          <figcaption data-i18n="gal.c8">Freier Blick vom Balkon</figcaption>
+        </button>
+        <button type="button">
+          <img src="images/homeoffice.jpg" width="1200" height="900" loading="lazy" decoding="async"
+               alt="Schreibtisch am Fenster, eingerichtet zum Arbeiten">
+          <figcaption data-i18n="gal.c9">Zum Arbeiten ist vorgesorgt</figcaption>
+        </button>
+        <button type="button">
+          <img src="images/winterstimmung.jpg" width="1200" height="900" loading="lazy" decoding="async"
+               alt="Verschneite Landschaft, gesehen aus Wohnzimmer und Küche">
+          <figcaption data-i18n="gal.c10">Winterstimmung aus dem Wohnzimmer</figcaption>
+        </button>
+        <button type="button">
+          <img src="images/das-haus.jpg" width="1200" height="900" loading="lazy" decoding="async"
+               alt="Außenansicht des Hauses mit der Ferienwohnung in der obersten Etage">
+          <figcaption data-i18n="gal.c11">Das Haus</figcaption>
+        </button>
+        <button type="button">
+          <img src="images/ankommen.jpg" width="1200" height="900" loading="lazy" decoding="async"
+               alt="Eingangsbereich der Ferienwohnung mit eigenem Aufgang">
+          <figcaption data-i18n="gal.c12">Ankommen. Eintreten.</figcaption>
+        </button>
+      </div>
+
+      <div class="gallery-cta reveal">
+        <button type="button" class="btn btn-primary js-open-all">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+          <span data-i18n="gal.all">Alle 31 Bilder ansehen</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= REGION ================= -->
+  <section id="region">
+    <div class="shell">
+      <span class="eyebrow reveal" data-i18n="reg.eyebrow">Region &amp; Ausflugsziele</span>
+      <h2 class="reveal" data-i18n-html="reg.title">Am Tor zum <em>Salzkammergut.</em></h2>
+      <p class="lede reveal" style="margin:clamp(20px,2.6vw,30px) 0 clamp(30px,4vw,46px)" data-i18n="reg.lede">Eine Welt der Berge, der glasklaren Seen und der kraftvollen Natur. Schönheit, die gut tut.</p>
+
+      <div class="region-media reveal reveal-zoom">
+        <figure>
+          <!-- FOTO: Attersee mit Höllengebirge — Wikimedia Commons CC BY-SA 4.0 -->
+          <img src="images/region-hoellengebirge.jpg" width="1920" height="674" loading="lazy" decoding="async"
+               alt="Blick über den Attersee auf die Nordwestseite des Höllengebirges">
+        </figure>
+        <figure>
+          <!-- FOTO: Salzkammergut-Landschaft — Wikimedia Commons CC BY-SA 4.0 -->
+          <img src="images/region-salzkammergut.jpg" width="1920" height="1440" loading="lazy" decoding="async"
+               alt="Landschaft im Salzkammergut mit Bergen und Wiesen">
+        </figure>
+      </div>
+
+      <div class="dist-grid reveal">
+        <div class="dist card"><span class="d-val" data-i18n="reg.d1v">Wenige Minuten</span><span class="d-lbl" data-i18n="reg.d1l">zum Attersee</span></div>
+        <div class="dist card"><span class="d-val">400 m</span><span class="d-lbl" data-i18n="reg.d2l">zur Bushaltestelle</span></div>
+        <div class="dist card"><span class="d-val">1,1 km</span><span class="d-lbl" data-i18n="reg.d3l">zum Lokalbahnhof</span></div>
+        <div class="dist card"><span class="d-val">3 km</span><span class="d-lbl" data-i18n="reg.d4l">nach Vöcklabruck</span></div>
+        <div class="dist card"><span class="d-val">6 km</span><span class="d-lbl" data-i18n="reg.d5l">zum Bahnhof Vöcklabruck</span></div>
+        <div class="dist card"><span class="d-val">~30 min</span><span class="d-lbl" data-i18n="reg.d6l">zum Traunsee und Mondsee</span></div>
+        <div class="dist card"><span class="d-val">~50 min</span><span class="d-lbl" data-i18n="reg.d7l">nach Salzburg, Linz und Bad Ischl</span></div>
+        <div class="dist card"><span class="d-val">1,5 km</span><span class="d-lbl" data-i18n="reg.d8l">zu Supermarkt, Bäcker, Apotheke und Bank</span></div>
+      </div>
+
+      <div class="chips reveal" role="list">
+        <span class="chip" role="listitem" data-i18n="reg.c1">Barfußweg &amp; Waldlehrpfad an der Dürren Ager</span>
+        <span class="chip" role="listitem" data-i18n="reg.c2">Vöckla-Ufer-Rundweg</span>
+        <span class="chip" role="listitem" data-i18n="reg.c3">Klettersteige</span>
+        <span class="chip" role="listitem" data-i18n="reg.c4">Radwege</span>
+        <span class="chip" role="listitem" data-i18n="reg.c5">Reiten</span>
+        <span class="chip" role="listitem" data-i18n="reg.c6">Golfen</span>
+        <span class="chip" role="listitem" data-i18n="reg.c7">Autofreier Tag am Attersee</span>
+        <span class="chip" role="listitem" data-i18n="reg.c8">Race around the Lake</span>
+        <span class="chip" role="listitem" data-i18n="reg.c9">Salzburger Festspiele</span>
+        <span class="chip" role="listitem" data-i18n="reg.c10">Attergauer Kultursommer</span>
+        <span class="chip" role="listitem" data-i18n="reg.c11">Gmundner Festwochen</span>
+        <span class="chip" role="listitem" data-i18n="reg.c12">Bad Ischler Lehárfestival</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= QUOTE BAND — Hinter dem Horizont ================= -->
+  <section class="quoteband align-end" aria-label="Leitspruch">
+    <div class="qb-bg" aria-hidden="true">
+      <!-- FOTO: Attersee mit Höllengebirge -->
+      <img class="qb-parallax" src="images/region-hoellengebirge.jpg" width="1920" height="674" loading="lazy" decoding="async" alt="">
+    </div>
+    <div class="shell">
+      <blockquote class="reveal" data-i18n="q.horizont">Hinter dem Horizont geht es weiter!</blockquote>
+      <p class="qb-attr reveal">
+        <span data-i18n="q.horizontNote">Leitspruch von Gerlinde Brandt</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= SEASONS ================= -->
+  <section id="jahreszeiten">
+    <div class="shell">
+      <span class="eyebrow reveal" data-i18n="sea.eyebrow">Vier Jahreszeiten</span>
+      <h2 class="reveal" style="margin-bottom:clamp(30px,4vw,46px)" data-i18n-html="sea.title">Der See <em>zu jeder Zeit.</em></h2>
+
+      <div class="seasons">
+        <figure class="season reveal">
+          <img src="images/jahreszeit-fruehling.jpg" width="1920" height="1280" loading="lazy" decoding="async"
+               alt="Der Attersee im Frühling mit Blütenstaub auf dem Wasser">
+          <figcaption><span data-i18n="sea.s1">Frühling</span><small data-i18n="sea.s1s">Blütenstaub auf dem Wasser</small></figcaption>
+        </figure>
+        <figure class="season reveal">
+          <img src="images/jahreszeit-sommer.jpg" width="1920" height="1080" loading="lazy" decoding="async"
+               alt="Segelboote auf dem Attersee im Sommer">
+          <figcaption><span data-i18n="sea.s2">Sommer</span><small data-i18n="sea.s2s">Segeln und Schwimmen</small></figcaption>
+        </figure>
+        <figure class="season reveal">
+          <img src="images/jahreszeit-herbst.jpg" width="1920" height="1080" loading="lazy" decoding="async"
+               alt="Herbstlicher Ausblick vom Schafberg über die Seen des Salzkammerguts">
+          <figcaption><span data-i18n="sea.s3">Herbst</span><small data-i18n="sea.s3s">Klare Sicht vom Schafberg</small></figcaption>
+        </figure>
+        <figure class="season reveal">
+          <img src="images/jahreszeit-winter.jpg" width="1920" height="1080" loading="lazy" decoding="async"
+               alt="Das Höllengebirge im Winter unter Schnee">
+          <figcaption><span data-i18n="sea.s4">Winter</span><small data-i18n="sea.s4s">Stille im Höllengebirge</small></figcaption>
+        </figure>
+      </div>
+
+      <div class="inline-quote reveal">
+        <blockquote data-i18n="q.stifter">Die Berge stehen noch, die Sonne strahlt auf sie herunter, und die Jahre sind dahin als wie ein Tag.</blockquote>
+        <cite>Adalbert Stifter<small data-i18n="q.stifterNote">Oberösterreichischer Dichter, 1805–1868</small></cite>
+      </div>
+
+      <p class="credit-line reveal" style="margin-top:26px">
+        <span data-i18n="credit.seasons">Fotos: Frühling, Sommer · Tigerente · CC BY-SA 4.0 — Herbst · Josef Lahmer · CC BY-SA 3.0 — Winter · Stefankasberger · CC BY-SA 4.0. Alle über</span>
+        <a href="https://commons.wikimedia.org/wiki/Category:Attersee" rel="noopener">Wikimedia Commons</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= TESTIMONIALS ================= -->
+  <section id="stimmen">
+    <div class="shell">
+      <span class="eyebrow reveal" data-i18n="voi.eyebrow">Gästestimmen</span>
+      <h2 class="reveal" style="margin-bottom:clamp(30px,4vw,46px)" data-i18n-html="voi.title">Was Gäste <em>mitnehmen.</em></h2>
+
+      <div class="rating-panel card reveal">
+        <div class="rating-score">
+          <span class="num">4,98</span>
+          <span class="of" data-i18n="voi.of">von 5</span>
+        </div>
+        <div class="rating-meta">
+          <span class="stars" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+          </span>
+          <span class="n" data-i18n="voi.count">56 Bewertungen auf Airbnb · 98 % davon fünf Sterne</span>
+        </div>
+        <div class="rating-badges">
+          <span data-i18n="voi.badge1">Gäste-Favorit</span>
+          <span data-i18n="voi.badge2">Superhost</span>
+        </div>
+      </div>
+
+      <div class="quotes">
+        <figure class="quote card reveal">
+          <div class="stars" aria-label="5 von 5 Sternen">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+          </div>
+          <blockquote data-i18n="voi.q1">Super schöne Wohnung und perfekte Lage für einen Urlaub im Salzkammergut. Gerlindes Wohnung ist super groß, gut ausgestattet und hat alles, was das Herz begehrt — besonders in der Küche war ich überrascht, an was alles gedacht wurde!</blockquote>
+          <cite data-i18n="voi.c1">Luka · August 2026</cite>
+        </figure>
+
+        <figure class="quote card reveal">
+          <div class="stars" aria-label="5 von 5 Sternen">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+          </div>
+          <blockquote data-i18n="voi.q2">Wir haben uns sehr wohl gefühlt in der schönen, sauberen und ruhig gelegenen Ferienwohnung. Die Unterkunft ist genau wie im Inserat beschrieben. Gerlinde ist eine sehr herzliche Gastgeberin, gut erreichbar und hilfsbereit.</blockquote>
+          <cite data-i18n="voi.c2">Susanne · Juli 2026</cite>
+        </figure>
+
+        <figure class="quote card reveal">
+          <div class="stars" aria-label="5 von 5 Sternen">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+          </div>
+          <blockquote data-i18n="voi.q3">Wir haben unseren Aufenthalt sehr genossen und uns vom ersten Moment an wie zu Hause gefühlt. Alles war perfekt für uns vorbereitet, und das Haus ist schön, gemütlich und außergewöhnlich gut gepflegt.</blockquote>
+          <cite data-i18n="voi.c3">Jana · August 2026</cite>
+        </figure>
+
+        <figure class="quote card reveal">
+          <div class="stars" aria-label="5 von 5 Sternen">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .9-5.2 4.8 1.4 7L12 18l-6.2 3.3 1.4-7L2 9.5l7-.9z"/></svg>
+          </div>
+          <blockquote data-i18n="voi.q4">Die Unterkunft war für unsere Ausflüge ins Salzkammergut und die weitere Umgebung ideal. Es war ausreichend Platz für uns als Familie mit Kind und die Wohnung ist sehr ruhig gelegen. Wir hatten einen schönen Urlaub bei Gerlinde.</blockquote>
+          <cite data-i18n="voi.c4">Jens · Juni 2026</cite>
+        </figure>
+      </div>
+
+      <div class="quotes-source reveal">
+        <a class="btn btn-ghost" href="https://www.airbnb.at/rooms/47439814/reviews" target="_blank" rel="noopener">
+          <span data-i18n="voi.all">Alle 56 Bewertungen auf Airbnb</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HOST ================= -->
+  <section id="gastgeberin">
+    <div class="shell">
+      <div class="host reveal">
+        <figure class="portrait">
+          <!-- FOTO: Porträt Gerlinde Brandt -->
+          <img src="images/gastgeberin.jpg" width="350" height="450" loading="lazy" decoding="async"
+               alt="Gerlinde Brandt, Gastgeberin der Ferienwohnung">
+        </figure>
+        <div class="prose">
+          <span class="eyebrow" data-i18n="host.eyebrow">Ihre Gastgeberin</span>
+          <h2 data-i18n="host.title">Gerlinde Brandt</h2>
+
+          <p class="host-voice" data-i18n="host.voice">Es ist wunderbar, im Salzkammergut zu wohnen — diese Kraft und Schönheit der Natur ist einfach atemberaubend. Seid herzlich willkommen!</p>
+
+          <p data-i18n="host.body1">Nach Jahren im Banken- und Versicherungswesen hat Gerlinde Brandt 2008 ihren eigenen Weg eingeschlagen. Seither arbeitet sie in Timelkam als Beraterin und Coach — mit dem Menschen im Mittelpunkt und einem Ohr für das, was zwischen den Zeilen liegt.</p>
+
+          <p data-i18n="host.body2">Als ihre drei Kinder nacheinander in die Stadt zogen, blieb ein ganzes Haus zurück — und mit ihm eine Stille, die zu schön war, um sie für sich zu behalten. Heute steht die obere Etage Gästen offen: eigener Eingang, eigene Etage, ganz für sich. Kein Hotelbetrieb, kein Kommen und Gehen. Nur der Frieden, der hier ohnehin zuhause ist.</p>
+
+          <p data-i18n="host.body3">Sie spricht Deutsch und Englisch, antwortet in der Regel innerhalb einer Stunde und ist seit fünf Jahren als Superhost auf Airbnb ausgezeichnet.</p>
+
+          <div class="busch">
+            <p data-i18n="host.busch">Viel zu spät begreifen viele die versäumten Lebensziele, Freunde, Schönheit der Natur, Gesundheit, Reisen und Kultur. Darum, Mensch, sei zeitig weise!</p>
+            <cite>Wilhelm Busch</cite>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BOOKING ================= -->
+  <section id="buchung">
+    <div class="shell">
+      <span class="eyebrow reveal" data-i18n="book.eyebrow">Preise &amp; Buchung</span>
+      <h2 class="reveal" style="margin-bottom:clamp(30px,4vw,46px)" data-i18n-html="book.title">Ihr Aufenthalt, <em>ganz einfach.</em></h2>
+
+      <div class="booking-grid">
+        <div class="pricecard card reveal">
+          <div class="price-figure">
+            <span class="from" data-i18n="book.from">ab</span>
+            <!-- PLATZHALTER: echten Preis eintragen -->
+            <span class="amount">XX&nbsp;€</span>
+            <span class="unit" data-i18n="book.unit">/ Nacht</span>
+          </div>
+          <ul class="price-notes">
+            <li data-i18n="book.n1">Die ganze Wohnung zur alleinigen Nutzung, für bis zu 5 Gäste</li>
+            <li data-i18n="book.n2">Eigener Eingang über die Außenstiege</li>
+            <li data-i18n="book.n3">Eigenständiger Check-in per Schlüsselbox</li>
+            <li data-i18n="book.n4">Handtücher, Bettwäsche, Föhn und Waschmaschine inklusive</li>
+            <li data-i18n="book.n5">Ortstaxe 2,40 € pro Person und Nacht, vor Ort in bar — nicht für Kinder unter 15</li>
+          </ul>
+          <a class="btn btn-primary" href="https://www.airbnb.at/rooms/47439814" target="_blank" rel="noopener"
+             data-i18n="book.cta">Verfügbarkeit auf Airbnb prüfen</a>
+          <p class="form-note" data-i18n="book.calendarNote">Der aktuelle Belegungskalender liegt auf Airbnb. Für eine direkte Anfrage nutzen Sie gerne das Formular daneben.</p>
+        </div>
+
+        <form class="enquiry card reveal" id="enquiryForm">
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.15rem;font-weight:600" data-i18n="book.formTitle">Direkt anfragen</h3>
+          <div class="field">
+            <label for="f-name" data-i18n="book.fName">Name</label>
+            <input type="text" id="f-name" name="name" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="f-mail" data-i18n="book.fMail">E-Mail</label>
+            <input type="email" id="f-mail" name="email" required autocomplete="email">
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-in" data-i18n="book.fIn">Anreise</label>
+              <input type="date" id="f-in" name="checkin">
+            </div>
+            <div class="field">
+              <label for="f-out" data-i18n="book.fOut">Abreise</label>
+              <input type="date" id="f-out" name="checkout">
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-msg" data-i18n="book.fMsg">Nachricht</label>
+            <textarea id="f-msg" name="message" rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" data-i18n="book.fSend">Anfrage senden</button>
+          <p class="form-note" data-i18n="book.fNote">Das Formular öffnet Ihr E-Mail-Programm mit einer vorbereiteten Nachricht an info@gerlinde-brandt.at. Es werden keine Daten an Dritte übertragen.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section id="faq">
+    <div class="shell">
+      <span class="eyebrow reveal" data-i18n="faq.eyebrow">Häufige Fragen</span>
+      <h2 class="reveal" style="margin-bottom:clamp(30px,4vw,46px)" data-i18n-html="faq.title">Gut zu <em>wissen.</em></h2>
+
+      <div class="faq reveal">
+        <details>
+          <summary data-i18n="faq.q1">Wie läuft der Check-in ab?</summary>
+          <div class="answer" data-i18n="faq.a1">Sie checken eigenständig per Schlüsselbox ein, zwischen 16:00 und 24:00 Uhr. Der Check-out ist bis 11:00 Uhr. Die Wohnung liegt in der obersten Etage und hat einen eigenen Eingang über eine Außenstiege.</div>
+        </details>
+        <details>
+          <summary data-i18n="faq.q2">Gibt es einen Parkplatz?</summary>
+          <div class="answer" data-i18n="faq.a2">Ja, kostenlose Parkplätze befinden sich entlang des Hauses auf dem Grundstück.</div>
+        </details>
+        <details>
+          <summary data-i18n="faq.q3">Ist die Wohnung für Kinder und Familien geeignet?</summary>
+          <div class="answer" data-i18n="faq.a3">Ja. Es finden bis zu fünf Gäste Platz, im großen Schlafzimmer steht auf Wunsch ein Babybett bereit, und im Wohn-Schlafraum gibt es eine Ausziehcouch und ein zusätzliches Tagesbett. Sprechen Sie uns bei besonderen Wünschen gerne an.</div>
+        </details>
+        <details>
+          <summary data-i18n="faq.q4">Fallen zusätzliche Kosten an?</summary>
+          <div class="answer" data-i18n="faq.a4">Die Ortstaxe beträgt 2,40 € pro Person und Nacht und wird vor Ort in bar entrichtet. Für Kinder unter 15 Jahren fällt sie nicht an.</div>
+        </details>
+        <details>
+          <summary data-i18n="faq.q5">Sind Haustiere erlaubt?</summary>
+          <div class="answer" data-i18n="faq.a5">Bitte fragen Sie vor der Buchung kurz an — wir klären das gerne individuell.</div>
+        </details>
+        <details>
+          <summary data-i18n="faq.q6">Ist die Wohnung barrierefrei erreichbar?</summary>
+          <div class="answer" data-i18n="faq.a6">Nein. Die Ferienwohnung liegt in der obersten Etage und ist über eine Außenstiege erreichbar — Treppensteigen ist also erforderlich.</div>
+        </details>
+        <details>
+          <summary data-i18n="faq.q7">Kann man ohne Auto anreisen?</summary>
+          <div class="answer" data-i18n="faq.a7">Ja. Die Bushaltestelle ist rund 400 Meter entfernt, der Lokalbahnhof 1,1 Kilometer und der Bahnhof Vöcklabruck 6 Kilometer. Supermarkt, Bäcker, Apotheke und Bank erreichen Sie innerhalb von 1,5 Kilometern.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FLOATING BOOKING DOCK ================= -->
+<div class="dock" id="dock">
+  <a class="btn btn-ghost" href="#buchung" id="dockEnquiry">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+    <span data-i18n="dock.enquiry">Anfrage senden</span>
+  </a>
+  <a class="btn btn-primary" href="https://www.airbnb.at/rooms/47439814" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+    <span data-i18n-html="dock.airbnb">Auf Airbnb<span class="lbl-long"> prüfen</span></span>
+  </a>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site" id="kontakt">
+  <div class="shell">
+    <div class="foot-grid">
+      <div>
+        <span class="eyebrow" data-i18n="foot.eyebrow">Kontakt &amp; Anfahrt</span>
+        <h2 data-i18n-html="foot.title">Wir freuen uns <em>auf Sie.</em></h2>
+        <ul class="contact-list">
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <div>
+              <span class="c-lbl" data-i18n="foot.address">Adresse</span>
+              <address style="font-style:normal">Kalchofen 32<br>4850 Timelkam<br><span data-i18n="foot.country">Oberösterreich, Österreich</span></address>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            <div>
+              <span class="c-lbl" data-i18n="foot.phone">Telefon</span>
+              <a href="tel:+436764345048">+43 676 4345048</a>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+            <div>
+              <span class="c-lbl" data-i18n="foot.email">E-Mail</span>
+              <a href="mailto:info@gerlinde-brandt.at">info@gerlinde-brandt.at</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="mapframe">
+        <iframe
+          src="https://www.openstreetmap.org/export/embed.html?bbox=13.5820%2C47.9760%2C13.6220%2C47.9960&amp;layer=mapnik&amp;marker=47.9860%2C13.6020"
+          title="Karte: Kalchofen 32, 4850 Timelkam"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© <span id="year">2026</span> B.E@H.O.M.E · Gerlinde Brandt</span>
+      <nav aria-label="Rechtliches">
+        <a href="#" data-i18n="foot.imprint">Impressum</a>
+        <a href="#" data-i18n="foot.privacy">Datenschutz</a>
+        <a href="https://www.airbnb.at/rooms/47439814" target="_blank" rel="noopener">Airbnb</a>
+      </nav>
+    </div>
+
+    <p class="credit-line" style="margin-top:22px">
+      <span data-i18n="foot.credits">Landschaftsfotos: Wikimedia Commons — Tigerente, Josef Lahmer, Stefankasberger, Pimlico27, lizenziert unter</span>
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license noopener">CC BY-SA 4.0</a> /
+      <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license noopener">CC BY-SA 3.0</a>.
+      <span data-i18n="foot.credits2">Innenaufnahmen und Porträt: Gerlinde Brandt. Gästestimmen: gekürzte Auszüge aus Airbnb-Bewertungen. Karte: OpenStreetMap-Mitwirkende.</span>
+    </p>
+  </div>
+</footer>
+
+<!-- ================= LIGHTBOX ================= -->
+<dialog class="lightbox" id="lightbox" aria-label="Bildansicht">
+  <button type="button" class="lb-close" id="lbClose" aria-label="Schließen">&times;</button>
+  <button type="button" class="lb-prev" id="lbPrev" aria-label="Vorheriges Bild">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+  </button>
+  <button type="button" class="lb-next" id="lbNext" aria-label="Nächstes Bild">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+  </button>
+  <figure>
+    <img id="lbImg" alt="">
+    <figcaption id="lbCap"></figcaption>
+  </figure>
+  <p class="lb-counter" id="lbCount"></p>
+</dialog>
+
+<!-- ================= FULL GALLERY ================= -->
+<dialog class="allshots" id="allshots" aria-label="Alle Bilder">
+  <div class="allshots-inner">
+    <div class="allshots-head">
+      <div>
+        <h2 data-i18n="all.title">Alle Bilder</h2>
+        <span class="count" id="allCount"></span>
+      </div>
+      <button type="button" class="allshots-close" id="allClose">
+        <span data-i18n="all.close">Schließen</span> &times;
+      </button>
+    </div>
+    <div class="allshots-grid" id="allGrid"></div>
+  </div>
+</dialog>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"VacationRental",
+  "name":"B.E@H.O.M.E — Ferienwohnung Gerlinde Brandt",
+  "description":"Großzügige Ferienwohnung mit Panoramablick in Timelkam am Tor zum Salzkammergut, wenige Minuten vom Attersee. Zwei Schlafzimmer plus Wohn-Schlafraum, Balkon und eigener Gartenbereich.",
+  "url":"https://gerlinde-brandt.at/ferienwohnung/",
+  "image":"https://gerlinde-brandt.at/ferienwohnung/images/hero-attersee-panorama.jpg",
+  "telephone":"+436764345048",
+  "email":"info@gerlinde-brandt.at",
+  "address":{
+    "@type":"PostalAddress",
+    "streetAddress":"Kalchofen 32",
+    "postalCode":"4850",
+    "addressLocality":"Timelkam",
+    "addressRegion":"Oberösterreich",
+    "addressCountry":"AT"
+  },
+  "geo":{"@type":"GeoCoordinates","latitude":47.986,"longitude":13.602},
+  "numberOfBedrooms":2,
+  "numberOfBathroomsTotal":1,
+  "occupancy":{"@type":"QuantitativeValue","maxValue":5},
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.98","reviewCount":"56","bestRating":"5"},
+  "amenityFeature":[
+    {"@type":"LocationFeatureSpecification","name":"WLAN","value":true},
+    {"@type":"LocationFeatureSpecification","name":"Komplette Küche","value":true},
+    {"@type":"LocationFeatureSpecification","name":"Balkon","value":true},
+    {"@type":"LocationFeatureSpecification","name":"Garten","value":true},
+    {"@type":"LocationFeatureSpecification","name":"Kostenloser Parkplatz","value":true},
+    {"@type":"LocationFeatureSpecification","name":"Waschmaschine","value":true},
+    {"@type":"LocationFeatureSpecification","name":"Ultra-HD Smart TV","value":true},
+    {"@type":"LocationFeatureSpecification","name":"Arbeitsplatz","value":true}
+  ],
+  "containedInPlace":{"@type":"Place","name":"Salzkammergut, Attersee"}
+}
+</script>
+
+<script>
+(function(){
+  'use strict';
+
+  var root = document.documentElement;
+  root.classList.add('js');
+
+  /* =========================================================
+     Full photo set — rendered into the gallery view on first open
+     ========================================================= */
+  var PHOTOS = [
+    ['wohnzimmer.jpg',1200,900,'Das Wohnzimmer — gemütlich und großzügig','The living room — cosy and generous'],
+    ['wohnzimmer-2.jpg',1200,1200,'Wohnbereich mit Blick zum Balkon','Living area looking out to the balcony'],
+    ['wohnzimmer-3.jpg',1200,900,'Der Wohnbereich von der anderen Seite','The living area from the other side'],
+    ['wohnzimmer-bett.jpg',1200,1600,'Schlafen im Wohnzimmer — hochwertiges Tagesbett','Sleeping in the living room — a proper day bed'],
+    ['urlaub-entspannung.jpg',1200,900,'Urlaub und Entspannung','Holiday and rest'],
+    ['kueche.jpg',1200,900,'Küche mit Essplatz und Zugang zum Balkon','Kitchen with dining area and balcony access'],
+    ['essen.jpg',1200,900,'Essen und genießen','Eat and enjoy'],
+    ['schlafzimmer.jpg',1200,900,'Schlafzimmer mit Kingsize-Doppelbett','Bedroom with king-size double bed'],
+    ['schlafzimmer-2.jpg',1200,900,'Das Schlafzimmer bei Tageslicht','The bedroom in daylight'],
+    ['einzelzimmer.jpg',1200,1600,'Zweites Schlafzimmer mit Boxspringbett, 140 cm','Second bedroom with a 140 cm box-spring bed'],
+    ['herbstsonne.jpg',1200,1007,'Ausblick aus dem zweiten Schlafzimmer mit Herbstsonne','View from the second bedroom in autumn sunlight'],
+    ['badezimmer.jpg',1200,900,'Badezimmer mit Eck-Badewanne','Bathroom with corner tub'],
+    ['badezimmer-2.jpg',1200,900,'Waschtisch und Dusche','Washstand and shower'],
+    ['wc.jpg',1200,1600,'Getrenntes WC','Separate WC'],
+    ['homeoffice.jpg',1200,900,'Zum Arbeiten ist vorgesorgt','Set up for working'],
+    ['homeoffice-2.jpg',1200,1600,'Schreibplatz für alle Fälle','A desk for whatever comes up'],
+    ['balkon-aussicht.jpg',1200,900,'Freier Blick vom Balkon','Open view from the balcony'],
+    ['ruhe-frische-luft.jpg',1200,1600,'Ruhe und frische Luft genießen','Quiet and fresh air'],
+    ['balkon-garten.jpg',1200,900,'Blick vom Balkon in den Garten','From the balcony into the garden'],
+    ['gartenecke.jpg',1200,900,'Blick vom Balkon auf eine Gartenecke','A corner of the garden, seen from the balcony'],
+    ['sonnenuntergang-balkon.jpg',1200,1313,'Sonnenuntergang vom Balkon','Sunset from the balcony'],
+    ['abendstimmung.jpg',1200,900,'Abendstimmung','Evening light'],
+    ['winterstimmung.jpg',1200,900,'Winterstimmung aus Wohnzimmer und Küche','Winter light from living room and kitchen'],
+    ['herbst-geniessen.jpg',1200,675,'Den Herbst genießen','Enjoying the autumn'],
+    ['gartenplatz.jpg',1200,957,'Der private Gartenplatz','The private garden spot'],
+    ['ruhe-garten.jpg',1200,900,'Die Ruhe im Garten genießen','The quiet of the garden'],
+    ['bluetenmeer.jpg',1200,1801,'Blütenmeer im Frühsommer','A sea of blossom in early summer'],
+    ['gesamte-etage.jpg',1200,1093,'Die Ferienwohnung erstreckt sich über die gesamte Etage','The apartment takes up the whole floor'],
+    ['das-haus.jpg',1200,900,'Das Haus','The house'],
+    ['aufgang.jpg',1200,1600,'Eigener Aufgang zur Ferienwohnung','Your own stairway up to the apartment'],
+    ['ankommen.jpg',1200,900,'Ankommen. Eintreten.','Arrive. Step in.']
+  ];
+
+  /* =========================================================
+     i18n
+     ========================================================= */
+  var T = {
+    de: {},   /* German is the markup default — captured below */
+    en: {
+      'skip':'Skip to content',
+
+      'nav.apartment':'Apartment','nav.gallery':'Gallery','nav.region':'Region',
+      'nav.voices':'Reviews','nav.contact':'Contact','nav.cta':'Availability',
+
+      'hero.eyebrow':'Timelkam · Lake Atter · Salzkammergut',
+      'hero.title':'Find your calm.<br><em>Simply be.</em>',
+      'hero.lede':'A spacious holiday apartment with a sweeping panoramic view — leave everyday life behind, just minutes from Lake Atter.',
+      'hero.favourite':'Guest<br>favourite',
+      'hero.reviews':'reviews',
+      'hero.ratingSr':'One of the most loved homes on Airbnb according to guests — rated 4.98 out of 5 from 56 reviews.',
+      'trust.clean':'Spotless','trust.superhost':'Guest favourite & Superhost',
+      'trust.bedrooms':'2 bedrooms','trust.guests':'up to 5 guests',
+      'trust.outdoor':'Balcony & garden','trust.entrance':'Private entrance',
+      'hero.ctaPrimary':'Check availability','hero.ctaGallery':'See all photos',
+      'hero.badge':'September still available',
+      'credit.hero':'Photo: Lake Atter panorama from Kleiner Schoberstein · Tigerente',
+      'credit.seasons':'Photos: Spring, Summer · Tigerente · CC BY-SA 4.0 — Autumn · Josef Lahmer · CC BY-SA 3.0 — Winter · Stefankasberger · CC BY-SA 4.0. All via',
+
+      'facts.guests':'Guests across 2 bedrooms and 3 beds',
+      'facts.outdoorVal':'Balcony','facts.outdoor':'With its own garden area, reached from kitchen and living room',
+      'facts.town':'To the district town of Vöcklabruck',
+      'facts.cities':'To Salzburg, Linz and Bad Ischl',
+
+      'apt.eyebrow':'The apartment',
+      'apt.title':'Arrive. Step in.<br><em>Feel at home.</em>',
+      'apt.poem':'Find your calm. Leave everyday life behind. Here and now. Simply be.',
+      'apt.body':'The entire apartment is yours alone — the top floor of a private house, reached by an outside stairway with its own entrance. Furnished with care, quietly situated, looking out into the green.',
+      'apt.body2':'You check in by yourself using a key box. Towels and bed linen are ready for you, and for the first morning a small selection of teas and coffee pods.',
+      'apt.r1n':'Bedroom 1','apt.r1t':'Generous, with a king-size double bed. A cot is available on request.',
+      'apt.r2n':'Bedroom 2','apt.r2t':'Smaller, with a box-spring bed 140 cm wide.',
+      'apt.r3n':'Living & sleeping','apt.r3t':'Flexible, with an Ultra-HD smart TV, pull-out couch and an additional day bed.',
+      'apt.r4n':'Kitchen','apt.r4t':'Fully equipped, with dining area and balcony access: fridge-freezer, oven, dishwasher, coffee machine, kettle, toaster and griddle.',
+      'apt.r5n':'Bath & WC','apt.r5t':'Washstand, shower, bathtub and hairdryer. The WC is separate.',
+      'apt.r6n':'Balcony & garden','apt.r6t':'Your own balcony looking into the green, and a comfortable seating and dining area in the garden.',
+
+      'q.khayyam':'Life is a journey — and those who travel live twice.',
+      'q.khayyamNote':'Persian poet and scholar, 1048–1131',
+      'q.horizont':'Beyond the horizon, it carries on!',
+      'q.horizontNote':'Gerlinde Brandt’s guiding words',
+      'q.stifter':'The mountains still stand, the sun shines down on them, and the years have passed like a single day.',
+      'q.stifterNote':'Upper Austrian writer, 1805–1868',
+
+      'amen.eyebrow':'Amenities','amen.title':'Everything you need, <em>already here.</em>',
+      'amen.a1n':'Full kitchen','amen.a1t':'Oven, dishwasher, fridge-freezer, coffee machine, toaster, griddle',
+      'amen.a2n':'Wi-Fi','amen.a2t':'Throughout the apartment',
+      'amen.a3n':'Ultra-HD smart TV','amen.a3t':'In the living and sleeping room',
+      'amen.a4n':'Balcony with valley view','amen.a4t':'Reached from kitchen and living room',
+      'amen.a5n':'Private garden','amen.a5t':'With seating and dining area',
+      'amen.a6n':'Free parking','amen.a6t':'Alongside the house, on the property',
+      'amen.a7n':'Self check-in','amen.a7t':'By key box, with no waiting',
+      'amen.a8n':'Washing machine','amen.a8t':'Free to use, iron available',
+      'amen.a9n':'Bathtub & shower','amen.a9t':'Separate WC, towels and hairdryer',
+      'amen.a10n':'Dedicated workspace','amen.a10t':'Set up for working while away',
+      'amen.lede':'51 amenities — the ones that matter most first, the full list below.',
+      'amen.missing':'Not available: air conditioning, tumble dryer and carbon monoxide alarm. There are no security cameras on the property.',
+
+      /* the full amenity list, taken from the Airbnb listing */
+      'am.gView':"View",
+      'am.v1':"Valley view",
+      'am.v2':"Garden view",
+      'am.gBath':"Bathroom",
+      'am.b1':"Bathtub",
+      'am.b2':"Hairdryer",
+      'am.b3':"Cleaning products",
+      'am.b4':"Soap and shower gel",
+      'am.b5':"Hot water",
+      'am.gSleep':"Bedroom &amp; laundry",
+      'am.s1':"Washing machine, free",
+      'am.s2':"Towels, linen, soap, toilet paper",
+      'am.s3':"Hangers",
+      'am.s4':"Bed linen",
+      'am.s5':"Extra pillows and blankets",
+      'am.s6':"Blackout blinds",
+      'am.s7':"Iron",
+      'am.s8':"Drying rack",
+      'am.s9':"Clothes storage",
+      'am.gFam':"For families",
+      'am.f1':"Travel cot",
+      'am.f2':"High chair",
+      'am.gKit':"Kitchen &amp; dining",
+      'am.k1':"Kitchen",
+      'am.k2':"Fridge",
+      'am.k3':"Freezer",
+      'am.k4':"Stove",
+      'am.k5':"Oven",
+      'am.k6':"Dishwasher",
+      'am.k7':"Coffee machine",
+      'am.k8':"Coffee",
+      'am.k9':"Kettle",
+      'am.k10':"Toaster",
+      'am.k11':"Blender",
+      'am.k12':"Baking sheet",
+      'am.k13':"Pots, pans, oil, salt and pepper",
+      'am.k14':"Dishes and cutlery",
+      'am.k15':"Wine glasses",
+      'am.k16':"Dining table",
+      'am.k17':"Barbecue utensils",
+      'am.gOut':"Outdoors &amp; access",
+      'am.o1':"Private entrance",
+      'am.o2':"Private balcony",
+      'am.o3':"Garden, not fully fenced",
+      'am.o4':"Outdoor furniture",
+      'am.o5':"Outdoor dining area",
+      'am.o6':"Barbecue",
+      'am.o7':"Fire pit",
+      'am.o8':"Free parking on the property",
+      'am.gComf':"Comfort &amp; safety",
+      'am.c1':"Heating",
+      'am.c2':"Wi-Fi",
+      'am.c3':"Dedicated workspace",
+      'am.c4':"Smoke alarm",
+      'am.c5':"Fire extinguisher",
+      'am.gServ':"Services",
+      'am.x1':"Self check-in",
+      'am.x2':"Key box",
+      'am.x3':"Long stays from 28 days",
+
+      'gal.eyebrow':'Gallery','gal.title':'A look <em>inside.</em>',
+      'gal.lede':'Tap any photo to enlarge it — or see every shot at once.',
+      'gal.all':'See all 31 photos',
+      'gal.c1':'The living room — cosy and generous',
+      'gal.c2':'Kitchen with dining area and balcony access',
+      'gal.c3':'Bedroom with king-size double bed',
+      'gal.c4':'Bathroom with corner tub',
+      'gal.c5':'Second bedroom, box-spring bed 140 cm',
+      'gal.c6':'Sunset from the balcony',
+      'gal.c7':'The private garden spot',
+      'gal.c8':'Open view from the balcony',
+      'gal.c9':'Set up for working',
+      'gal.c10':'Winter light from the living room',
+      'gal.c11':'The house',
+      'gal.c12':'Arrive. Step in.',
+
+      'all.title':'All photos','all.close':'Close',
+
+      'reg.eyebrow':'Region & things to do',
+      'reg.title':'At the gateway to the <em>Salzkammergut.</em>',
+      'reg.lede':'A world of mountains, crystal-clear lakes and powerful nature. Beauty that does you good.',
+      'reg.d1v':'A few minutes','reg.d1l':'to Lake Atter',
+      'reg.d2l':'to the bus stop','reg.d3l':'to the local railway station',
+      'reg.d4l':'to Vöcklabruck','reg.d5l':'to Vöcklabruck main station',
+      'reg.d6l':'to Lake Traun and Lake Mond','reg.d7l':'to Salzburg, Linz and Bad Ischl',
+      'reg.d8l':'to supermarket, bakery, pharmacy and bank',
+      'reg.c1':'Barefoot trail & forest nature trail along the Dürre Ager',
+      'reg.c2':'Vöckla riverside circular walk','reg.c3':'Via ferrata routes','reg.c4':'Cycling routes',
+      'reg.c5':'Horse riding','reg.c6':'Golf','reg.c7':'Car-free day at Lake Atter',
+      'reg.c8':'Race around the Lake','reg.c9':'Salzburg Festival','reg.c10':'Attergau Culture Summer',
+      'reg.c11':'Gmunden Festival Weeks','reg.c12':'Bad Ischl Lehár Festival',
+
+      'sea.eyebrow':'Four seasons','sea.title':'The lake <em>all year round.</em>',
+      'sea.s1':'Spring','sea.s1s':'Pollen drifting on the water',
+      'sea.s2':'Summer','sea.s2s':'Sailing and swimming',
+      'sea.s3':'Autumn','sea.s3s':'Clear views from the Schafberg',
+      'sea.s4':'Winter','sea.s4s':'Stillness in the Höllengebirge',
+
+      'voi.eyebrow':'Guest reviews','voi.title':'What guests <em>take home.</em>',
+      'voi.of':'out of 5',
+      'voi.count':'56 reviews on Airbnb · 98 % of them five stars',
+      'voi.badge1':'Guest favourite','voi.badge2':'Superhost',
+      'voi.q1':'A really lovely apartment and the perfect base for a holiday in the Salzkammergut. Gerlinde’s place is huge, well equipped and has everything you could wish for — the kitchen in particular surprised me with how much had been thought of!',
+      'voi.q2':'We felt very much at ease in this beautiful, spotless and quietly situated apartment. It is exactly as described in the listing. Gerlinde is a warm host, easy to reach and helpful.',
+      'voi.q3':'We thoroughly enjoyed our stay and felt at home from the very first moment. Everything was perfectly prepared for us, and the house is lovely, comfortable and exceptionally well kept.',
+      'voi.q4':'The apartment was ideal for our trips into the Salzkammergut and further afield. There was plenty of room for us as a family with a child, and it is very quietly situated. We had a lovely holiday at Gerlinde’s.',
+      'voi.c1':'Luka · August 2026','voi.c2':'Susanne · July 2026',
+      'voi.c3':'Jana · August 2026','voi.c4':'Jens · June 2026',
+      'voi.all':'All 56 reviews on Airbnb',
+
+      'host.eyebrow':'Your host','host.title':'Gerlinde Brandt',
+      'host.voice':'It is wonderful to live in the Salzkammergut — the strength and beauty of this landscape is simply breathtaking. You are warmly welcome!',
+      'host.body1':'After years in banking and insurance, Gerlinde Brandt set out on her own path in 2008. She has worked in Timelkam as an adviser and coach ever since — with people at the centre, and an ear for what lies between the lines.',
+      'host.body2':'When her three children moved to the city one after another, a whole house was left behind — and with it a quiet too good to keep to herself. Today the upper floor stands open to guests: its own entrance, its own floor, entirely yours. No hotel bustle, no coming and going. Just the peace that has always lived here.',
+      'host.body3':'She speaks German and English, usually replies within an hour, and has been an Airbnb Superhost for five years.',
+      'host.busch':'Far too late do many grasp the goals in life they let slip by — friends, the beauty of nature, health, travel and culture. So, be wise in good time!',
+
+      'book.eyebrow':'Rates & booking','book.title':'Your stay, <em>made simple.</em>',
+      'book.from':'from','book.unit':'/ night',
+      'book.n1':'The entire apartment for your sole use, for up to 5 guests',
+      'book.n2':'Own entrance via the outside stairway',
+      'book.n3':'Self check-in by key box',
+      'book.n4':'Towels, bed linen, hairdryer and washing machine included',
+      'book.n5':'Local tax of €2.40 per person per night, paid in cash on arrival — not charged for children under 15',
+      'book.cta':'Check availability on Airbnb',
+      'book.calendarNote':'The current availability calendar lives on Airbnb. For a direct enquiry, please use the form alongside.',
+      'book.formTitle':'Send an enquiry',
+      'book.fName':'Name','book.fMail':'Email','book.fIn':'Arrival','book.fOut':'Departure',
+      'book.fMsg':'Message','book.fSend':'Send enquiry',
+      'book.fNote':'The form opens your email programme with a prepared message to info@gerlinde-brandt.at. No data is transmitted to third parties.',
+
+      'dock.enquiry':'Send enquiry','dock.airbnb':'On Airbnb<span class="lbl-long"> now</span>',
+
+      'faq.eyebrow':'Frequently asked','faq.title':'Good to <em>know.</em>',
+      'faq.q1':'How does check-in work?',
+      'faq.a1':'You check in by yourself using a key box, between 4 pm and midnight. Check-out is by 11 am. The apartment is on the top floor with its own entrance via an outside stairway.',
+      'faq.q2':'Is there parking?','faq.a2':'Yes, free parking is available alongside the house on the property.',
+      'faq.q3':'Is the apartment suitable for children and families?',
+      'faq.a3':'Yes. There is room for up to five guests, a cot is available in the large bedroom on request, and the living-and-sleeping room has a pull-out couch and an additional day bed. Do get in touch about any particular needs.',
+      'faq.q4':'Are there any additional costs?',
+      'faq.a4':'A local tax of €2.40 per person per night is paid in cash on arrival. It does not apply to children under 15.',
+      'faq.q5':'Are pets allowed?','faq.a5':'Please ask before booking — we are happy to work it out with you.',
+      'faq.q6':'Is the apartment step-free?',
+      'faq.a6':'No. The apartment is on the top floor and is reached by an outside stairway, so climbing stairs is required.',
+      'faq.q7':'Can I arrive without a car?',
+      'faq.a7':'Yes. The bus stop is about 400 metres away, the local railway station 1.1 kilometres and Vöcklabruck main station 6 kilometres. Supermarket, bakery, pharmacy and bank are all within 1.5 kilometres.',
+
+      'foot.eyebrow':'Contact & directions','foot.title':'We look forward <em>to meeting you.</em>',
+      'foot.address':'Address','foot.country':'Upper Austria, Austria',
+      'foot.phone':'Phone','foot.email':'Email',
+      'foot.imprint':'Imprint','foot.privacy':'Privacy',
+      'foot.credits':'Landscape photography: Wikimedia Commons — Tigerente, Josef Lahmer, Stefankasberger, Pimlico27, licensed under',
+      'foot.credits2':'Interior photographs and portrait: Gerlinde Brandt. Guest quotes: shortened extracts from Airbnb reviews. Map: OpenStreetMap contributors.'
+    }
+  };
+
+  var nodes = document.querySelectorAll('[data-i18n],[data-i18n-html]');
+  nodes.forEach(function(el){
+    var html = el.hasAttribute('data-i18n-html');
+    var key = el.getAttribute(html ? 'data-i18n-html' : 'data-i18n');
+    T.de[key] = html ? el.innerHTML : el.textContent;
+  });
+
+  var langButtons = document.querySelectorAll('.langswitch button');
+  var lang = 'de';
+
+  function setLang(next){
+    lang = next;
+    var dict = T[next] || T.de;
+    nodes.forEach(function(el){
+      var html = el.hasAttribute('data-i18n-html');
+      var key = el.getAttribute(html ? 'data-i18n-html' : 'data-i18n');
+      var val = dict[key];
+      if (val === undefined) return;
+      if (html) el.innerHTML = val; else el.textContent = val;
+    });
+    root.lang = next;
+    langButtons.forEach(function(b){
+      b.setAttribute('aria-pressed', String(b.dataset.lang === next));
+    });
+    paintAllShots();
+    try { localStorage.setItem('beh-lang', next); } catch(e){}
+  }
+
+  langButtons.forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.dataset.lang); });
+  });
+
+  /* =========================================================
+     FULL GALLERY
+     ========================================================= */
+  var allDlg   = document.getElementById('allshots');
+  var allGrid  = document.getElementById('allGrid');
+  var allCount = document.getElementById('allCount');
+  var allBuilt = false;
+
+  function buildAllShots(){
+    if (allBuilt) return;
+    var frag = document.createDocumentFragment();
+    PHOTOS.forEach(function(p){
+      var fig = document.createElement('figure');
+      var img = document.createElement('img');
+      img.src = 'images/' + p[0];
+      img.width = p[1];
+      img.height = p[2];
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.alt = p[3];
+      var cap = document.createElement('figcaption');
+      fig.appendChild(img);
+      fig.appendChild(cap);
+      frag.appendChild(fig);
+    });
+    allGrid.appendChild(frag);
+    allBuilt = true;
+    paintAllShots();
+  }
+
+  /* Captions and alt text live in PHOTOS, so they follow the language switch */
+  function paintAllShots(){
+    if (!allBuilt) return;
+    var figs = allGrid.children;
+    for (var i = 0; i < figs.length; i++){
+      var text = lang === 'en' ? PHOTOS[i][4] : PHOTOS[i][3];
+      figs[i].querySelector('img').alt = text;
+      figs[i].querySelector('figcaption').textContent = text;
+    }
+    allCount.textContent = PHOTOS.length + (lang === 'en' ? ' photos' : ' Bilder');
+  }
+
+  /* Scroll locking is released on every path that can close a dialog rather
+     than from the 'close' event: some engines never deliver it, and a missed
+     unlock would leave the whole page unscrollable. */
+  function openDialog(dlg){
+    document.body.classList.add('locked');
+    if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open','');
+  }
+
+  function closeDialog(dlg){
+    if (dlg.open) {
+      if (typeof dlg.close === 'function') dlg.close(); else dlg.removeAttribute('open');
+    }
+    document.body.classList.remove('locked');
+  }
+
+  function openAll(){
+    buildAllShots();
+    openDialog(allDlg);
+  }
+
+  document.querySelectorAll('.js-open-all').forEach(function(b){
+    b.addEventListener('click', openAll);
+  });
+  document.getElementById('allClose').addEventListener('click', function(){ closeDialog(allDlg); });
+
+  /* =========================================================
+     LIGHTBOX
+     ========================================================= */
+  var lb      = document.getElementById('lightbox');
+  var lbImg   = document.getElementById('lbImg');
+  var lbCap   = document.getElementById('lbCap');
+  var lbCount = document.getElementById('lbCount');
+  var shots   = Array.prototype.slice.call(document.querySelectorAll('#gallery button'));
+  var current = 0;
+
+  function show(i){
+    current = (i + shots.length) % shots.length;
+    var btn = shots[current];
+    var img = btn.querySelector('img');
+    var cap = btn.querySelector('figcaption');
+    lbImg.src = img.src;
+    lbImg.alt = img.alt;
+    lbCap.textContent = cap ? cap.textContent : '';
+    lbCount.textContent = (current + 1) + ' / ' + shots.length;
+  }
+
+  shots.forEach(function(btn, i){
+    btn.addEventListener('click', function(){
+      show(i);
+      openDialog(lb);
+    });
+  });
+
+  function closeLightbox(){
+    closeDialog(lb);
+    if (shots[current]) shots[current].focus();
+  }
+
+  document.getElementById('lbClose').addEventListener('click', closeLightbox);
+  document.getElementById('lbPrev').addEventListener('click', function(){ show(current - 1); });
+  document.getElementById('lbNext').addEventListener('click', function(){ show(current + 1); });
+
+  lb.addEventListener('click', function(ev){ if (ev.target === lb) closeLightbox(); });
+
+  /* Escape closes a modal dialog natively; catching it at document level keeps
+     the unlock reliable even where the dialog's own events do not arrive. */
+  document.addEventListener('keydown', function(ev){
+    if (ev.key !== 'Escape' && ev.key !== 'Esc') return;
+    if (lb.open) { ev.preventDefault(); closeLightbox(); }
+    else if (allDlg.open) { ev.preventDefault(); closeDialog(allDlg); }
+    else if (document.body.classList.contains('locked')) {
+      document.body.classList.remove('locked');
+    }
+  });
+
+  lb.addEventListener('keydown', function(ev){
+    if (ev.key === 'ArrowRight'){ ev.preventDefault(); show(current + 1); }
+    if (ev.key === 'ArrowLeft'){ ev.preventDefault(); show(current - 1); }
+  });
+
+  /* =========================================================
+     MOTION
+     ========================================================= */
+  var calm = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var observerAlive = false;
+
+  var hero = document.querySelector('.hero');
+  function lightHero(){ hero.classList.add('hero-lit'); }
+  if (calm.matches) {
+    lightHero();
+  } else {
+    var heroImgEl = document.getElementById('heroImg');
+    if (heroImgEl && heroImgEl.complete) {
+      requestAnimationFrame(lightHero);
+    } else if (heroImgEl) {
+      heroImgEl.addEventListener('load', lightHero, {once:true});
+      heroImgEl.addEventListener('error', lightHero, {once:true});
+    }
+    /* Never let a stalled image keep the opening words hidden */
+    setTimeout(lightHero, 1200);
+  }
+
+  var reveals = document.querySelectorAll('.reveal');
+  var showAll = function(){ reveals.forEach(function(el){ el.classList.add('in'); }); };
+
+  if (calm.matches || !('IntersectionObserver' in window)) {
+    showAll();
+    observerAlive = true;
+  } else {
+    var seen = new WeakMap();
+    var io = new IntersectionObserver(function(entries){
+      observerAlive = true;
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        var parent = e.target.parentElement;
+        var n = seen.get(parent) || 0;
+        seen.set(parent, n + 1);
+        e.target.style.transitionDelay = Math.min(n, 5) * 85 + 'ms';
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+    reveals.forEach(function(el){ io.observe(el); });
+  }
+
+  var counters = document.querySelectorAll('.count');
+  var fillCounters = function(){
+    counters.forEach(function(el){ el.textContent = el.dataset.to; });
+  };
+
+  /* Nothing ever came back from the observer — stalled frames or an exotic
+     engine. Show the real content rather than leaving a blank page behind. */
+  setTimeout(function(){
+    if (observerAlive) return;
+    showAll();
+    fillCounters();
+  }, 2000);
+
+  if (calm.matches || !('IntersectionObserver' in window)) {
+    fillCounters();
+  } else {
+    counters.forEach(function(el){ el.textContent = '0'; });
+    var cio = new IntersectionObserver(function(entries){
+      observerAlive = true;
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        var el = e.target, to = parseInt(el.dataset.to, 10), t0 = null;
+        var dur = 900 + Math.min(to, 60) * 8;
+        function tick(ts){
+          if (t0 === null) t0 = ts;
+          var p = Math.min((ts - t0) / dur, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = String(Math.round(to * eased));
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        cio.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function(el){ cio.observe(el); });
+  }
+
+  /* =========================================================
+     SCROLL — one rAF-throttled listener drives every effect
+     ========================================================= */
+  var topbar   = document.getElementById('topbar');
+  var progress = document.getElementById('progressBar');
+  var dock     = document.getElementById('dock');
+  var heroImg  = document.getElementById('heroImg');
+  var booking  = document.getElementById('buchung');
+  var bands    = Array.prototype.slice.call(document.querySelectorAll('.qb-parallax'));
+
+  var ticking = false;
+
+  function onScroll(){
+    var y = window.scrollY;
+    var vh = window.innerHeight;
+
+    var max = document.documentElement.scrollHeight - vh;
+    progress.style.width = (max > 0 ? Math.min(y / max, 1) * 100 : 0) + '%';
+
+    topbar.classList.toggle('stuck', y > 40);
+
+    if (!calm.matches && heroImg && y < vh * 1.4) {
+      heroImg.style.transform = 'scale(1.12) translate3d(0,' + (y * 0.055).toFixed(2) + 'px,0)';
+    }
+
+    if (!calm.matches) {
+      bands.forEach(function(img){
+        var band = img.closest('.quoteband');
+        var r = band.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > vh + 200) return;
+        var offset = (r.top + r.height / 2 - vh / 2) / vh;
+        img.style.transform = 'translate3d(0,' + (offset * -80).toFixed(1) + 'px,0)';
+      });
+    }
+
+    /* The dock carries the booking actions; it steps aside inside the booking
+       section where the same two actions already sit in the page. */
+    var br = booking.getBoundingClientRect();
+    var inBooking = br.top < vh * 0.85 && br.bottom > vh * 0.15;
+    dock.classList.toggle('show', y > vh * 0.75 && !inBooking);
+
+    ticking = false;
+  }
+
+  function requestScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(onScroll);
+  }
+
+  window.addEventListener('scroll', requestScroll, { passive: true });
+  window.addEventListener('resize', requestScroll, { passive: true });
+  onScroll();
+
+  /* ---- Scrollspy ---- */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('#mainnav a'));
+  var targets = navLinks.map(function(a){
+    return document.querySelector(a.getAttribute('href'));
+  }).filter(Boolean);
+
+  if (targets.length && 'IntersectionObserver' in window) {
+    var visible = new Set();
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) visible.add(e.target); else visible.delete(e.target);
+      });
+      var best = null;
+      targets.forEach(function(t){
+        if (visible.has(t) && (best === null || t.offsetTop < best.offsetTop)) best = t;
+      });
+      navLinks.forEach(function(a){
+        a.setAttribute('aria-current',
+          String(best !== null && a.getAttribute('href') === '#' + best.id));
+      });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+    targets.forEach(function(t){ spy.observe(t); });
+  }
+
+  /* =========================================================
+     ENQUIRY FORM — mailto fallback
+     ========================================================= */
+  var form = document.getElementById('enquiryForm');
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var d = new FormData(form);
+    var en = lang === 'en';
+    var get = function(k){ return (d.get(k) || '').toString().trim(); };
+
+    var subject = (en ? 'Enquiry B.E@H.O.M.E — ' : 'Anfrage B.E@H.O.M.E — ') + get('name');
+    var lines = [
+      'Name: ' + get('name'),
+      (en ? 'Email: ' : 'E-Mail: ') + get('email'),
+      (en ? 'Arrival: ' : 'Anreise: ') + (get('checkin') || '—'),
+      (en ? 'Departure: ' : 'Abreise: ') + (get('checkout') || '—'),
+      '',
+      get('message')
+    ];
+    window.location.href = 'mailto:info@gerlinde-brandt.at'
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(lines.join('\n'));
+  });
+
+  document.getElementById('dockEnquiry').addEventListener('click', function(){
+    setTimeout(function(){ document.getElementById('f-name').focus({preventScroll:true}); }, 700);
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* Language preference, once everything above is wired up */
+  var saved = null;
+  try { saved = localStorage.getItem('beh-lang'); } catch(e){}
+  if (saved === 'en') {
+    setLang('en');
+  } else if (!saved && (navigator.language || '').slice(0,2).toLowerCase() !== 'de') {
+    setLang('en');
+  }
+})();
+</script>
+</body>
+</html>

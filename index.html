@@ -310,8 +310,8 @@ img{max-width:100%;height:auto;display:block}
 .brand{
   font-family:'Space Grotesk',sans-serif;
   font-weight:700;
-  font-size:1.02rem;
-  letter-spacing:.02em;
+  font-size:clamp(1.35rem,1.1rem + 1.1vw,1.95rem);
+  letter-spacing:.01em;
   color:var(--ink);
   text-decoration:none;
   white-space:nowrap;
@@ -447,14 +447,14 @@ img{max-width:100%;height:auto;display:block}
   inset:0;
   background:
     linear-gradient(180deg,
-      rgba(7,18,32,.6) 0%,
-      rgba(7,18,32,.54) 18%,
-      rgba(7,18,32,.66) 42%,
-      rgba(7,18,32,.86) 70%,
-      rgba(7,18,32,.94) 100%),
+      rgba(7,18,32,.52) 0%,
+      rgba(7,18,32,.46) 18%,
+      rgba(7,18,32,.57) 42%,
+      rgba(7,18,32,.72) 70%,
+      rgba(7,18,32,.8) 100%),
     linear-gradient(100deg,
-      rgba(7,18,32,.46) 0%,
-      rgba(7,18,32,.2) 52%,
+      rgba(7,18,32,.4) 0%,
+      rgba(7,18,32,.18) 52%,
       rgba(7,18,32,0) 100%);
 }
 /* Portrait screens crop the panorama to a narrow slice and the copy fills
@@ -464,10 +464,10 @@ img{max-width:100%;height:auto;display:block}
 @media (max-width:900px){
   .hero-bg::after{
     background:linear-gradient(180deg,
-      rgba(7,18,32,.58) 0%,
-      rgba(7,18,32,.6) 18%,
-      rgba(7,18,32,.74) 50%,
-      rgba(7,18,32,.94) 100%);
+      rgba(7,18,32,.5) 0%,
+      rgba(7,18,32,.52) 18%,
+      rgba(7,18,32,.63) 50%,
+      rgba(7,18,32,.8) 100%);
   }
 }
 .hero-glow{
@@ -1892,7 +1892,15 @@ footer.site{
         </div>
         <div class="fact card reveal">
           <span class="val" data-i18n="facts.outdoorVal">Balkon</span>
-          <span class="lbl" data-i18n="facts.outdoor">Mit eigenem Gartenbereich, von Küche und Wohnzimmer begehbar</span>
+          <span class="lbl" data-i18n="facts.outdoor">Von Küche und Wohnzimmer begehbar</span>
+        </div>
+        <div class="fact card reveal">
+          <span class="val" data-i18n="facts.gardenVal">Garten &amp; Terrasse</span>
+          <span class="lbl" data-i18n="facts.garden">Eigener Gartenbereich mit Sitzgruppe im Grünen</span>
+        </div>
+        <div class="fact card reveal">
+          <span class="val"><span class="count" data-to="10">10</span>&nbsp;min</span>
+          <span class="lbl" data-i18n="facts.lake">Zum Attersee</span>
         </div>
         <div class="fact card reveal">
           <span class="val"><span class="count" data-to="3">3</span>&nbsp;km</span>
@@ -1901,6 +1909,10 @@ footer.site{
         <div class="fact card reveal">
           <span class="val"><span class="count" data-to="50">50</span>&nbsp;min</span>
           <span class="lbl" data-i18n="facts.cities">Nach Salzburg, Linz und Bad Ischl</span>
+        </div>
+        <div class="fact card reveal">
+          <span class="val"><span class="count" data-to="40">40</span>&nbsp;min</span>
+          <span class="lbl" data-i18n="facts.hallstatt">Nach Hallstatt und St. Wolfgang am Wolfgangsee</span>
         </div>
       </div>
     </div>
@@ -1919,9 +1931,9 @@ footer.site{
         </div>
 
         <figure class="apt-figure framed reveal reveal-zoom">
-          <!-- FOTO: Wohn-Schlafraum mit Tagesbett -->
-          <img src="images/wohnzimmer-bett.jpg" width="1200" height="1600" loading="lazy" decoding="async"
-               alt="Wohn-Schlafraum mit hochwertigem Tagesbett und Blick zum Fenster">
+          <!-- FOTO: Sonnenuntergang vom Balkon aus -->
+          <img src="images/sonnenuntergang-balkon.jpg" width="1200" height="1313" loading="lazy" decoding="async"
+               alt="Sonnenuntergang über den Hügeln, gesehen vom Balkon der Wohnung">
         </figure>
       </div>
 
@@ -2230,13 +2242,14 @@ footer.site{
       </div>
 
       <div class="dist-grid reveal">
-        <div class="dist card"><span class="d-val" data-i18n="reg.d1v">Wenige Minuten</span><span class="d-lbl" data-i18n="reg.d1l">zum Attersee</span></div>
+        <div class="dist card"><span class="d-val">10 min</span><span class="d-lbl" data-i18n="reg.d1l">zum Attersee</span></div>
         <div class="dist card"><span class="d-val">400 m</span><span class="d-lbl" data-i18n="reg.d2l">zur Bushaltestelle</span></div>
         <div class="dist card"><span class="d-val">1,1 km</span><span class="d-lbl" data-i18n="reg.d3l">zum Lokalbahnhof</span></div>
         <div class="dist card"><span class="d-val">3 km</span><span class="d-lbl" data-i18n="reg.d4l">nach Vöcklabruck</span></div>
         <div class="dist card"><span class="d-val">6 km</span><span class="d-lbl" data-i18n="reg.d5l">zum Bahnhof Vöcklabruck</span></div>
         <div class="dist card"><span class="d-val">~30 min</span><span class="d-lbl" data-i18n="reg.d6l">zum Traunsee und Mondsee</span></div>
         <div class="dist card"><span class="d-val">~50 min</span><span class="d-lbl" data-i18n="reg.d7l">nach Salzburg, Linz und Bad Ischl</span></div>
+        <div class="dist card"><span class="d-val">~40 min</span><span class="d-lbl" data-i18n="reg.d9l">nach Hallstatt und St. Wolfgang am Wolfgangsee</span></div>
         <div class="dist card"><span class="d-val">1,5 km</span><span class="d-lbl" data-i18n="reg.d8l">zu Supermarkt, Bäcker, Apotheke und Bank</span></div>
       </div>
 
@@ -2571,7 +2584,7 @@ footer.site{
 
       <div class="mapframe">
         <iframe
-          src="https://www.openstreetmap.org/export/embed.html?bbox=13.5820%2C47.9760%2C13.6220%2C47.9960&amp;layer=mapnik&amp;marker=47.9860%2C13.6020"
+          src="https://www.google.com/maps?q=Kalchofen+32,+4850+Timelkam,+%C3%96sterreich&output=embed"
           title="Karte: Kalchofen 32, 4850 Timelkam"
           loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
@@ -2590,7 +2603,7 @@ footer.site{
       <span data-i18n="foot.credits">Landschaftsfotos: Wikimedia Commons — Tigerente, Josef Lahmer, Stefankasberger, Pimlico27, lizenziert unter</span>
       <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license noopener">CC BY-SA 4.0</a> /
       <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license noopener">CC BY-SA 3.0</a>.
-      <span data-i18n="foot.credits2">Innenaufnahmen und Porträt: Gerlinde Brandt. Gästestimmen: gekürzte Auszüge aus Airbnb-Bewertungen. Karte: OpenStreetMap-Mitwirkende.</span>
+      <span data-i18n="foot.credits2">Innenaufnahmen und Porträt: Gerlinde Brandt. Gästestimmen: gekürzte Auszüge aus Airbnb-Bewertungen.</span>
     </p>
   </div>
 </footer>
@@ -2734,9 +2747,12 @@ footer.site{
       'credit.seasons':'Photos: Spring, Summer · Tigerente · CC BY-SA 4.0 — Autumn · Josef Lahmer · CC BY-SA 3.0 — Winter · Stefankasberger · CC BY-SA 4.0. All via',
 
       'facts.guests':'Guests across 2 bedrooms and 3 beds',
-      'facts.outdoorVal':'Balcony','facts.outdoor':'With its own garden area, reached from kitchen and living room',
+      'facts.outdoorVal':'Balcony','facts.outdoor':'Reached from kitchen and living room',
+      'facts.gardenVal':'Garden & terrace','facts.garden':'Private garden area with a seating group in the green',
+      'facts.lake':'To Lake Atter',
       'facts.town':'To the district town of Vöcklabruck',
       'facts.cities':'To Salzburg, Linz and Bad Ischl',
+      'facts.hallstatt':'To Hallstatt and St. Wolfgang on Lake Wolfgang',
 
       'apt.eyebrow':'The apartment',
       'apt.title':'Arrive. Step in.<br><em>Feel at home.</em>',
@@ -2853,11 +2869,12 @@ footer.site{
       'reg.eyebrow':'Region & things to do',
       'reg.title':'At the gateway to the <em>Salzkammergut.</em>',
       'reg.lede':'A world of mountains, crystal-clear lakes and powerful nature. Beauty that does you good.',
-      'reg.d1v':'A few minutes','reg.d1l':'to Lake Atter',
+      'reg.d1l':'to Lake Atter',
       'reg.d2l':'to the bus stop','reg.d3l':'to the local railway station',
       'reg.d4l':'to Vöcklabruck','reg.d5l':'to Vöcklabruck main station',
       'reg.d6l':'to Lake Traun and Lake Mond','reg.d7l':'to Salzburg, Linz and Bad Ischl',
       'reg.d8l':'to supermarket, bakery, pharmacy and bank',
+      'reg.d9l':'to Hallstatt and St. Wolfgang on Lake Wolfgang',
       'reg.c1':'Barefoot trail & forest nature trail along the Dürre Ager',
       'reg.c2':'Vöckla riverside circular walk','reg.c3':'Via ferrata routes','reg.c4':'Cycling routes',
       'reg.c5':'Horse riding','reg.c6':'Golf','reg.c7':'Car-free day at Lake Atter',
@@ -2924,7 +2941,7 @@ footer.site{
       'foot.phone':'Phone','foot.email':'Email',
       'foot.imprint':'Imprint','foot.privacy':'Privacy',
       'foot.credits':'Landscape photography: Wikimedia Commons — Tigerente, Josef Lahmer, Stefankasberger, Pimlico27, licensed under',
-      'foot.credits2':'Interior photographs and portrait: Gerlinde Brandt. Guest quotes: shortened extracts from Airbnb reviews. Map: OpenStreetMap contributors.'
+      'foot.credits2':'Interior photographs and portrait: Gerlinde Brandt. Guest quotes: shortened extracts from Airbnb reviews.'
     }
   };
 

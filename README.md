@@ -137,9 +137,9 @@ Deutsch steht im Markup und ist die Vorgabe, Englisch im JavaScript-Objekt `T.en
 
 - **Buchung** verlinkt auf das Airbnb-Inserat (Zimmer 47439814). Ein eingebetteter Kalender ist nicht möglich: Airbnb erlaubt kein Einbetten per iframe.
 - **Anfrageformular** öffnet das E-Mail-Programm mit vorbereiteter Nachricht an `info@gerlinde-brandt.at`. Kein Server, keine Datenübertragung an Dritte.
-- **Karte** von OpenStreetMap, ohne Tracking und ohne API-Schlüssel.
+- **Karte** ist Google Maps (`google.com/maps?q=…&output=embed`), ohne API-Schlüssel. Google setzt dabei eigene Cookies und lädt Ressourcen von seinen Servern — anders als die zuvor verwendete OpenStreetMap-Karte ist das **nicht mehr datensparsam.** Wer das vermeiden möchte, kann jederzeit zurück auf OpenStreetMap wechseln (siehe Git-Historie).
 - **Absicherung:** Meldet ein System keine Frames zurück, blendet ein Fallback nach zwei Sekunden alle Inhalte ein — die Seite bleibt nie leer.
-- **Datensparsam:** Keine Cookies, keine Analytics. Einzige externe Verbindungen sind Google Fonts und die OpenStreetMap-Karte.
+- **Datensparsam bis auf die Karte:** Die Seite selbst setzt keine Cookies und lädt keine Analytics. Externe Verbindungen sind Google Fonts und die Google-Maps-Karte im Footer.
 
 ### Fünf Fallstricke, die hier bewusst umgangen sind
 
@@ -152,4 +152,4 @@ Deutsch steht im Markup und ist die Vorgabe, Englisch im JavaScript-Objekt `T.en
 
 ## Geprüft
 
-Beide Dialoge beim Laden `display:none`, unter dem Seitenmittelpunkt liegt die Überschrift · 51 Ausstattungs-Chips in 8 Gruppen · kein horizontales Scrollen von 375 px bis 1920 px · Hero-Text erfüllt WCAG AA über dem Foto in allen geprüften Formaten (schlechtester Wert 5,55 bei 375 × 970; Eyebrow 6,4–14,2) · alle Bedienelemente mindestens 44 px · genau eine `h1` · alle Bilder mit Alt-Text und festen Maßen, 31 der Vollgalerie lazy geladen · Sprachwechsel über 256 Schlüssel verlustfrei, Galerie-Beschriftungen und Alt-Texte inbegriffen · Lightbox inklusive Umlauf · Vollgalerie öffnet aus Hero und Galerie, schließt per Button und Escape und gibt den Scroll jeweils frei · Dock-Sichtbarkeit und Fortschrittsbalken an fünf Scroll-Positionen · JSON-LD gültig, inklusive Bewertung.
+Beide Dialoge beim Laden `display:none`, unter dem Seitenmittelpunkt liegt die Überschrift · 51 Ausstattungs-Chips in 8 Gruppen · 7 Fakten-Kacheln und 9 Distanz-Karten, keine überlappt beim Umbruch · kein horizontales Scrollen von 375 px bis 1920 px · Hero-Text erfüllt WCAG AA über dem aufgehellten Foto an neun geprüften Fensterbreiten und -höhen, inklusive der Media-Query-Grenze bei 900 px (schlechtester Wert 4,27 → nachgeschärft auf 5,18) · alle Bedienelemente mindestens 44 px, auch die vergrößerte Marke überlappt die Navigation nicht · genau eine `h1` · alle Bilder mit Alt-Text und festen Maßen, 31 der Vollgalerie lazy geladen · Sprachwechsel über 260 Schlüssel verlustfrei, Galerie-Beschriftungen und Alt-Texte inbegriffen · Lightbox inklusive Umlauf · Vollgalerie öffnet aus Hero und Galerie, schließt per Button und Escape und gibt den Scroll jeweils frei · Dock-Sichtbarkeit und Fortschrittsbalken an fünf Scroll-Positionen · Google-Maps-Karte lädt und löst die Adresse korrekt auf · JSON-LD gültig, inklusive Bewertung.

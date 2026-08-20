@@ -18,7 +18,7 @@ Zum Veröffentlichen den kompletten Ordner (`index.html` + `images/` + `media/`)
 | Datei | Inhalt |
 |---|---|
 | `index.html` | Komplette Seite: Markup, CSS, JS, Übersetzungen, JSON-LD |
-| `images/` | 39 Fotos — 31 Innen- und Außenaufnahmen, Porträt, 7 Landschaftsbilder |
+| `images/` | 40 Fotos — 31 Innen- und Außenaufnahmen, Porträt, 7 Landschaftsbilder, 1 Video-Vorschaubild |
 | `media/` | `wohnung-wald.mp4` — Videoschleife im Abschnitt *Die Wohnung* |
 
 Sektionen: Hero · Auszeichnungs-Leiste · Fakten · Wohnung · *Zitat Khayyam* · Das bietet dir die Unterkunft · Galerie · Region · *Zitat „Hinter dem Horizont"* · Jahreszeiten *(mit Stifter-Zitat)* · Gästestimmen · Gastgeberin *(mit Busch-Zitat)* · Preise & Buchung · FAQ · Kontakt.
@@ -98,6 +98,16 @@ Statt eines Fotos läuft dort eine stumme Videoschleife (Farne im Sonnenlicht, 1
 
 **Lizenz:** Das Video stammt von Artlist (Jakub Klawikowski). Artlist verlangt in der Regel keine Namensnennung auf der Seite — anders als das CC-lizenzierte Titelbild. Bitte prüfen Sie, dass Ihre Artlist-Lizenz die Nutzung auf einer gewerblichen Website abdeckt.
 
+## Der Film über die Region
+
+Am Ende von *Region & Ausflugsziele* steht eine Reisereportage der Deutschen Welle über das Salzkammergut und Hallstatt ([gT1cWGtuA7I](https://www.youtube.com/watch?v=gT1cWGtuA7I)).
+
+**Eingebunden als Klick-Vorschau, nicht als normaler YouTube-Code.** Ein gewöhnlicher Einbettungscode lädt schon beim Seitenaufruf Skripte von Google und setzt Cookies — auch bei Besuchern, die das Video nie starten. Stattdessen liegt ein lokal gespeichertes Vorschaubild (`images/salzkammergut-video-vorschau.jpg`) mit Abspiel-Button in der Seite; erst beim Klick wird der Player nachgeladen, und zwar über `youtube-nocookie.com`.
+
+Geprüft: Vor dem Klick geht **keine einzige Anfrage** an YouTube, ytimg oder Google. Ebenfalls geprüft über die Player-Konfiguration: `playableInEmbed: true` — DW erlaubt die Einbettung.
+
+> Wird das Video getauscht, genügt es, `data-video` am Button zu ändern und ein neues Vorschaubild zu hinterlegen. Das passende Bild liegt jeweils unter `https://i.ytimg.com/vi/<VIDEO-ID>/maxresdefault.jpg`.
+
 ## Bewegung auf der Seite
 
 | Wo | Was |
@@ -155,7 +165,7 @@ Deutsch steht im Markup und ist die Vorgabe, Englisch im JavaScript-Objekt `T.en
 - **Anfrageformular** öffnet das E-Mail-Programm mit vorbereiteter Nachricht an `info@gerlinde-brandt.at`. Kein Server, keine Datenübertragung an Dritte.
 - **Karte** ist Google Maps (`google.com/maps?q=…&output=embed`), ohne API-Schlüssel. Google setzt dabei eigene Cookies und lädt Ressourcen von seinen Servern — anders als die zuvor verwendete OpenStreetMap-Karte ist das **nicht mehr datensparsam.** Wer das vermeiden möchte, kann jederzeit zurück auf OpenStreetMap wechseln (siehe Git-Historie).
 - **Absicherung:** Meldet ein System keine Frames zurück, blendet ein Fallback nach zwei Sekunden alle Inhalte ein — die Seite bleibt nie leer.
-- **Datensparsam bis auf die Karte:** Die Seite selbst setzt keine Cookies und lädt keine Analytics. Externe Verbindungen sind Google Fonts und die Google-Maps-Karte im Footer.
+- **Datensparsam bis auf die Karte:** Die Seite selbst setzt keine Cookies und lädt keine Analytics. Externe Verbindungen sind Google Fonts und die Google-Maps-Karte im Footer. Der Regions-Film lädt erst auf Klick.
 
 ### Fünf Fallstricke, die hier bewusst umgangen sind
 
@@ -168,4 +178,4 @@ Deutsch steht im Markup und ist die Vorgabe, Englisch im JavaScript-Objekt `T.en
 
 ## Geprüft
 
-Beide Dialoge beim Laden `display:none`, unter dem Seitenmittelpunkt liegt die Überschrift · 51 Ausstattungs-Chips in 8 Gruppen · 7 Fakten-Kacheln und 9 Distanz-Karten, keine überlappt beim Umbruch · kein horizontales Scrollen von 375 px bis 1920 px · Hero-Text erfüllt WCAG AA über dem aufgehellten Foto an neun geprüften Fensterbreiten und -höhen, inklusive der Media-Query-Grenze bei 900 px (schlechtester Wert 4,27 → nachgeschärft auf 5,18) · alle Bedienelemente mindestens 44 px, auch die vergrößerte Marke überlappt die Navigation nicht · genau eine `h1` · alle Bilder mit Alt-Text und festen Maßen, 31 der Vollgalerie lazy geladen · Sprachwechsel über 260 Schlüssel verlustfrei, Galerie-Beschriftungen und Alt-Texte inbegriffen · Lightbox inklusive Umlauf · Vollgalerie öffnet aus Hero und Galerie, schließt per Button und Escape und gibt den Scroll jeweils frei · Dock-Sichtbarkeit und Fortschrittsbalken an fünf Scroll-Positionen · Google-Maps-Karte lädt und löst die Adresse korrekt auf · Video spielt, läuft in Schleife, ist stumm und hält das Seitenverhältnis 4∶5 auf Desktop und Mobil · JSON-LD gültig, inklusive Bewertung.
+Beide Dialoge beim Laden `display:none`, unter dem Seitenmittelpunkt liegt die Überschrift · 51 Ausstattungs-Chips in 8 Gruppen · 7 Fakten-Kacheln und 9 Distanz-Karten, keine überlappt beim Umbruch · kein horizontales Scrollen von 375 px bis 1920 px · Hero-Text erfüllt WCAG AA über dem aufgehellten Foto an neun geprüften Fensterbreiten und -höhen, inklusive der Media-Query-Grenze bei 900 px (schlechtester Wert 4,27 → nachgeschärft auf 5,18) · alle Bedienelemente mindestens 44 px, auch die vergrößerte Marke überlappt die Navigation nicht · genau eine `h1` · alle Bilder mit Alt-Text und festen Maßen, 31 der Vollgalerie lazy geladen · Sprachwechsel über 260 Schlüssel verlustfrei, Galerie-Beschriftungen und Alt-Texte inbegriffen · Lightbox inklusive Umlauf · Vollgalerie öffnet aus Hero und Galerie, schließt per Button und Escape und gibt den Scroll jeweils frei · Dock-Sichtbarkeit und Fortschrittsbalken an fünf Scroll-Positionen · Google-Maps-Karte lädt und löst die Adresse korrekt auf · Video spielt, läuft in Schleife, ist stumm und hält das Seitenverhältnis 4∶5 auf Desktop und Mobil · Regions-Film lädt vor dem Klick nichts von Google und setzt danach den nocookie-Player ein · JSON-LD gültig, inklusive Bewertung.

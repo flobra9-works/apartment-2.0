@@ -1230,6 +1230,102 @@ img{max-width:100%;height:auto;display:block}
 }
 .chip:hover{background:var(--glass-strong);border-color:var(--glass-border-strong);transform:translateY(-2px)}
 
+/* ---- Film about the region ----
+   A still image stands in for the YouTube player until someone asks for it.
+   Nothing is fetched from Google — not the player, not the thumbnail — until
+   the button is pressed, which keeps the page free of third-party cookies. */
+.filmbox{margin-top:clamp(34px,4.5vw,54px)}
+.filmbox h3{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:1.08rem;
+  font-weight:600;
+  margin:0 0 6px;
+}
+.filmbox .film-note{
+  font-size:var(--step--1);
+  color:var(--ink-soft);
+  margin-bottom:clamp(16px,2vw,22px);
+}
+.film-frame{
+  position:relative;
+  border-radius:var(--radius-img);
+  overflow:hidden;
+  box-shadow:var(--shadow-deep);
+  background:#0d1520;
+  aspect-ratio:16/9;
+}
+.film-frame iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+  display:block;
+}
+.film-facade{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  padding:0;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  display:block;
+}
+.film-facade img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .9s cubic-bezier(.2,.7,.3,1),filter .4s;
+}
+.film-facade::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(8,16,28,.15),rgba(8,16,28,.6));
+}
+.film-facade:hover img{transform:scale(1.04)}
+.film-play{
+  position:absolute;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  z-index:2;
+  display:inline-flex;
+  align-items:center;
+  gap:.7em;
+  padding:14px 26px 14px 22px;
+  border-radius:var(--radius-pill);
+  background:var(--grad-accent);
+  color:#fff;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:1rem;
+  font-weight:600;
+  box-shadow:0 14px 36px rgba(6,12,26,.5);
+  transition:transform .3s cubic-bezier(.2,.7,.3,1);
+  pointer-events:none;
+  white-space:nowrap;
+}
+.film-facade:hover .film-play,
+.film-facade:focus-visible .film-play{transform:translate(-50%,-50%) scale(1.05)}
+.film-play svg{width:18px;height:18px;fill:currentColor;flex-shrink:0}
+.film-source{
+  position:absolute;
+  left:0;right:0;bottom:0;
+  z-index:2;
+  padding:26px 18px 12px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:.66rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:rgba(242,247,248,.85);
+  text-align:left;
+  pointer-events:none;
+}
+@media (max-width:520px){
+  .film-play{font-size:.88rem;padding:12px 20px 12px 16px}
+}
+
 /* ============================================================
    SEASONS
    ============================================================ */
@@ -2265,6 +2361,25 @@ footer.site{
         <span class="chip" role="listitem" data-i18n="reg.c11">Gmundner Festwochen</span>
         <span class="chip" role="listitem" data-i18n="reg.c12">Bad Ischler Lehárfestival</span>
       </div>
+
+      <div class="filmbox reveal">
+        <h3 data-i18n="film.title">Das Salzkammergut im Film</h3>
+        <p class="film-note" data-i18n="film.note">Eine Reisereportage der Deutschen Welle über die Seen, Berge und Hallstatt. Das Video wird erst geladen, wenn Sie es starten.</p>
+
+        <div class="film-frame" id="filmFrame">
+          <button type="button" class="film-facade" id="filmPlay"
+                  data-video="gT1cWGtuA7I"
+                  aria-label="Video abspielen: Das Salzkammergut, Reisereportage der Deutschen Welle. Wird von YouTube geladen.">
+            <img src="images/salzkammergut-video-vorschau.jpg" width="1280" height="720"
+                 loading="lazy" decoding="async" alt="">
+            <span class="film-play">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+              <span data-i18n="film.play">Video ansehen</span>
+            </span>
+            <span class="film-source" data-i18n="film.source">DW Travel · lädt von YouTube</span>
+          </button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -2880,6 +2995,10 @@ footer.site{
       'reg.c8':'Race around the Lake','reg.c9':'Salzburg Festival','reg.c10':'Attergau Culture Summer',
       'reg.c11':'Gmunden Festival Weeks','reg.c12':'Bad Ischl Lehár Festival',
 
+      'film.title':'The Salzkammergut on film',
+      'film.note':'A travel report by Deutsche Welle on the lakes, the mountains and Hallstatt. The video only loads once you start it.',
+      'film.play':'Watch the video','film.source':'DW Travel · loads from YouTube',
+
       'sea.eyebrow':'Four seasons','sea.title':'The lake <em>all year round.</em>',
       'sea.s1':'Spring','sea.s1s':'Pollen drifting on the water',
       'sea.s2':'Summer','sea.s2s':'Sailing and swimming',
@@ -3141,6 +3260,31 @@ footer.site{
     } else {
       playVideo();
     }
+  }
+
+  /* =========================================================
+     REGION FILM
+     The still image is swapped for the player only on request, so no Google
+     request is made — and no third-party cookie set — unless a visitor asks
+     to watch. youtube-nocookie.com keeps the playback itself minimal.
+     ========================================================= */
+  var filmPlay = document.getElementById('filmPlay');
+  if (filmPlay) {
+    filmPlay.addEventListener('click', function(){
+      var id = filmPlay.dataset.video;
+      var frame = document.getElementById('filmFrame');
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + id
+                 + '?autoplay=1&rel=0&modestbranding=1';
+      iframe.title = lang === 'en'
+        ? 'Austria’s breathtaking Salzkammergut — DW Travel'
+        : 'Das Salzkammergut — Reisereportage der Deutschen Welle';
+      iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      iframe.allowFullscreen = true;
+      frame.replaceChild(iframe, filmPlay);
+      iframe.focus();
+    });
   }
 
   var hero = document.querySelector('.hero');

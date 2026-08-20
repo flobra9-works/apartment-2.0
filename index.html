@@ -557,21 +557,6 @@ img{max-width:100%;height:auto;display:block}
   border:0;
 }
 
-.hero-credit{
-  position:absolute;
-  right:var(--gutter);
-  bottom:clamp(14px,2.4vh,22px);
-  z-index:2;
-  font-size:.68rem;
-  margin:0;
-  text-align:right;
-  max-width:min(46ch,60vw);
-  opacity:.75;
-}
-@media (max-width:760px){
-  .hero-credit{position:static;text-align:left;max-width:none;margin-top:22px;opacity:.8}
-}
-
 /* ---- Hero entrance ---- */
 .js .hero-anim{opacity:0;transform:translateY(26px)}
 .hero-lit .hero-anim{
@@ -1843,11 +1828,6 @@ footer.site{
       </div>
     </div>
 
-    <p class="credit-line hero-credit hero-anim d5">
-      <span data-i18n="credit.hero">Foto: Attersee-Panorama vom Kleinen Schoberstein · Tigerente</span>,
-      <a href="https://commons.wikimedia.org/wiki/File:Attersee_Panorama_20210605.jpg" rel="noopener">Wikimedia Commons</a>,
-      <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license noopener">CC BY-SA 4.0</a>
-    </p>
   </section>
 
   <!-- ================= TRUST STRIP ================= -->
@@ -2600,7 +2580,9 @@ footer.site{
     </div>
 
     <p class="credit-line" style="margin-top:22px">
-      <span data-i18n="foot.credits">Landschaftsfotos: Wikimedia Commons — Tigerente, Josef Lahmer, Stefankasberger, Pimlico27, lizenziert unter</span>
+      <span data-i18n="foot.creditsHero">Titelbild: Attersee-Panorama vom Kleinen Schoberstein · Tigerente ·</span>
+      <a href="https://commons.wikimedia.org/wiki/File:Attersee_Panorama_20210605.jpg" rel="noopener">Wikimedia Commons</a>.
+      <span data-i18n="foot.credits">Weitere Landschaftsfotos: Wikimedia Commons — Tigerente, Josef Lahmer, Stefankasberger, Pimlico27, lizenziert unter</span>
       <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license noopener">CC BY-SA 4.0</a> /
       <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license noopener">CC BY-SA 3.0</a>.
       <span data-i18n="foot.credits2">Innenaufnahmen und Porträt: Gerlinde Brandt. Gästestimmen: gekürzte Auszüge aus Airbnb-Bewertungen.</span>
@@ -2743,7 +2725,6 @@ footer.site{
       'trust.outdoor':'Balcony & garden','trust.entrance':'Private entrance',
       'hero.ctaPrimary':'Check availability','hero.ctaGallery':'See all photos',
       'hero.badge':'September still available',
-      'credit.hero':'Photo: Lake Atter panorama from Kleiner Schoberstein · Tigerente',
       'credit.seasons':'Photos: Spring, Summer · Tigerente · CC BY-SA 4.0 — Autumn · Josef Lahmer · CC BY-SA 3.0 — Winter · Stefankasberger · CC BY-SA 4.0. All via',
 
       'facts.guests':'Guests across 2 bedrooms and 3 beds',
@@ -2940,7 +2921,8 @@ footer.site{
       'foot.address':'Address','foot.country':'Upper Austria, Austria',
       'foot.phone':'Phone','foot.email':'Email',
       'foot.imprint':'Imprint','foot.privacy':'Privacy',
-      'foot.credits':'Landscape photography: Wikimedia Commons — Tigerente, Josef Lahmer, Stefankasberger, Pimlico27, licensed under',
+      'foot.creditsHero':'Cover image: Lake Atter panorama from Kleiner Schoberstein · Tigerente ·',
+      'foot.credits':'Further landscape photography: Wikimedia Commons — Tigerente, Josef Lahmer, Stefankasberger, Pimlico27, licensed under',
       'foot.credits2':'Interior photographs and portrait: Gerlinde Brandt. Guest quotes: shortened extracts from Airbnb reviews.'
     }
   };

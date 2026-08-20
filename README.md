@@ -11,7 +11,7 @@ Die Seite ist statisch — `index.html` genügt. Lokal ansehen:
 npx serve "Apartment 2.0"
 ```
 
-Zum Veröffentlichen den kompletten Ordner (`index.html` + `images/`) auf den Webspace laden.
+Zum Veröffentlichen den kompletten Ordner (`index.html` + `images/` + `media/`) auf den Webspace laden.
 
 ## Aufbau
 
@@ -19,6 +19,7 @@ Zum Veröffentlichen den kompletten Ordner (`index.html` + `images/`) auf den We
 |---|---|
 | `index.html` | Komplette Seite: Markup, CSS, JS, Übersetzungen, JSON-LD |
 | `images/` | 39 Fotos — 31 Innen- und Außenaufnahmen, Porträt, 7 Landschaftsbilder |
+| `media/` | `wohnung-wald.mp4` — Videoschleife im Abschnitt *Die Wohnung* |
 
 Sektionen: Hero · Auszeichnungs-Leiste · Fakten · Wohnung · *Zitat Khayyam* · Das bietet dir die Unterkunft · Galerie · Region · *Zitat „Hinter dem Horizont"* · Jahreszeiten *(mit Stifter-Zitat)* · Gästestimmen · Gastgeberin *(mit Busch-Zitat)* · Preise & Buchung · FAQ · Kontakt.
 
@@ -83,6 +84,20 @@ Der Button **„Alle 31 Bilder ansehen"** — im Hero und unter der Vorschau —
 
 **Ein Bild ergänzen oder tauschen:** Datei in `images/` legen und im `PHOTOS`-Array eine Zeile nach dem Muster `['datei.jpg', breite, höhe, 'Beschreibung DE', 'Description EN']` eintragen. Die Zahl im Button-Text (`gal.all` in beiden Sprachen) mit anpassen.
 
+## Das Video im Abschnitt „Die Wohnung"
+
+Statt eines Fotos läuft dort eine stumme Videoschleife (Farne im Sonnenlicht, 17 s, 1920 × 1080).
+
+- Es spielt **nur, solange es im Bild ist**, und pausiert beim Wegscrollen — Dekodieren im Hintergrund kostet sonst grundlos Akku.
+- Bei `prefers-reduced-motion` startet es **gar nicht** von selbst und bekommt stattdessen Bedienelemente.
+- `preload="metadata"` lädt nur den Dateikopf; daraus zeigt der Browser das erste Bild, ohne die ganze Datei zu holen.
+
+> **Zur Dateigröße:** Das Video wiegt **21 MB** — mehr als alle 39 Fotos zusammen (14 MB). Wer bis zu diesem Abschnitt scrollt, lädt es vollständig. Da kein ffmpeg verfügbar war, konnte ich es nicht verkleinern. Eine auf ~3–5 MB komprimierte Fassung (etwa 1280 px breit, CRF 28) oder ein auf 6–8 Sekunden gekürzter Ausschnitt würde die Seite spürbar leichter machen — die Datei einfach unter gleichem Namen in `media/` ersetzen.
+
+**Der `moov`-Block wurde nach vorne verschoben.** In der Originaldatei lag er am Ende, wodurch der Browser erst alle 21 MB hätte laden müssen, bevor das erste Bild erscheint. Beim Umschreiben mussten alle 22 Chunk-Offsets in der `stco`-Tabelle um den Versatz korrigiert werden; geprüft ist, dass sie sämtlich im gültigen Datenbereich liegen.
+
+**Lizenz:** Das Video stammt von Artlist (Jakub Klawikowski). Artlist verlangt in der Regel keine Namensnennung auf der Seite — anders als das CC-lizenzierte Titelbild. Bitte prüfen Sie, dass Ihre Artlist-Lizenz die Nutzung auf einer gewerblichen Website abdeckt.
+
 ## Bewegung auf der Seite
 
 | Wo | Was |
@@ -90,7 +105,8 @@ Der Button **„Alle 31 Bilder ansehen"** — im Hero und unter der Vorschau —
 | Beim Laden | Das Panorama fährt langsam aus einer Nahaufnahme zurück, darüber staffeln sich Eyebrow, Überschrift, Text, Bewertung und Buttons ein |
 | Hero beim Scrollen | Das Foto zieht langsamer mit als der Text darüber |
 | Ganz oben | Fortschrittsbalken über die Seitenlänge |
-| Sektionen | Karten und Bilder schweben gestaffelt ein, Fotos aus leichtem Zoom |
+| Sektionen | Karten und Bilder schweben gestaffelt ein, Fotos und Video aus leichtem Zoom |
+| Die Wohnung | Videoschleife, spielt nur im sichtbaren Bereich |
 | Zitat-Bänder | Das Hintergrundfoto driftet gegenläufig |
 | Fakten-Leiste | Die Zahlen zählen beim Einscrollen hoch |
 | Galerie | Bilder zoomen beim Überfahren, Bildunterschrift blendet ein |
@@ -152,4 +168,4 @@ Deutsch steht im Markup und ist die Vorgabe, Englisch im JavaScript-Objekt `T.en
 
 ## Geprüft
 
-Beide Dialoge beim Laden `display:none`, unter dem Seitenmittelpunkt liegt die Überschrift · 51 Ausstattungs-Chips in 8 Gruppen · 7 Fakten-Kacheln und 9 Distanz-Karten, keine überlappt beim Umbruch · kein horizontales Scrollen von 375 px bis 1920 px · Hero-Text erfüllt WCAG AA über dem aufgehellten Foto an neun geprüften Fensterbreiten und -höhen, inklusive der Media-Query-Grenze bei 900 px (schlechtester Wert 4,27 → nachgeschärft auf 5,18) · alle Bedienelemente mindestens 44 px, auch die vergrößerte Marke überlappt die Navigation nicht · genau eine `h1` · alle Bilder mit Alt-Text und festen Maßen, 31 der Vollgalerie lazy geladen · Sprachwechsel über 260 Schlüssel verlustfrei, Galerie-Beschriftungen und Alt-Texte inbegriffen · Lightbox inklusive Umlauf · Vollgalerie öffnet aus Hero und Galerie, schließt per Button und Escape und gibt den Scroll jeweils frei · Dock-Sichtbarkeit und Fortschrittsbalken an fünf Scroll-Positionen · Google-Maps-Karte lädt und löst die Adresse korrekt auf · JSON-LD gültig, inklusive Bewertung.
+Beide Dialoge beim Laden `display:none`, unter dem Seitenmittelpunkt liegt die Überschrift · 51 Ausstattungs-Chips in 8 Gruppen · 7 Fakten-Kacheln und 9 Distanz-Karten, keine überlappt beim Umbruch · kein horizontales Scrollen von 375 px bis 1920 px · Hero-Text erfüllt WCAG AA über dem aufgehellten Foto an neun geprüften Fensterbreiten und -höhen, inklusive der Media-Query-Grenze bei 900 px (schlechtester Wert 4,27 → nachgeschärft auf 5,18) · alle Bedienelemente mindestens 44 px, auch die vergrößerte Marke überlappt die Navigation nicht · genau eine `h1` · alle Bilder mit Alt-Text und festen Maßen, 31 der Vollgalerie lazy geladen · Sprachwechsel über 260 Schlüssel verlustfrei, Galerie-Beschriftungen und Alt-Texte inbegriffen · Lightbox inklusive Umlauf · Vollgalerie öffnet aus Hero und Galerie, schließt per Button und Escape und gibt den Scroll jeweils frei · Dock-Sichtbarkeit und Fortschrittsbalken an fünf Scroll-Positionen · Google-Maps-Karte lädt und löst die Adresse korrekt auf · Video spielt, läuft in Schleife, ist stumm und hält das Seitenverhältnis 4∶5 auf Desktop und Mobil · JSON-LD gültig, inklusive Bewertung.

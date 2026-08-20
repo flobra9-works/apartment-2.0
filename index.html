@@ -668,6 +668,19 @@ img{max-width:100%;height:auto;display:block}
 }
 
 .apt-figure img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.apt-figure video{
+  width:100%;
+  /* The width/height attributes land as presentational hints, so height must be
+     reset to auto or aspect-ratio is ignored and the box renders 1080px tall.
+     The global img{height:auto} covers images but not video. */
+  height:auto;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  display:block;
+  /* Painted while only the file header has arrived, so the frame never flashes
+     white before the first video frame is decoded. */
+  background:oklch(.32 .05 150);
+}
 
 /* ============================================================
    AMENITIES
@@ -1723,11 +1736,13 @@ footer.site{
 }
 .js .reveal.in{opacity:1;transform:none}
 
-.js .reveal-zoom img{
+.js .reveal-zoom img,
+.js .reveal-zoom video{
   transform:scale(1.07);
   transition:transform 1.3s cubic-bezier(.2,.7,.3,1);
 }
-.js .reveal-zoom.in img{transform:none}
+.js .reveal-zoom.in img,
+.js .reveal-zoom.in video{transform:none}
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -1737,7 +1752,8 @@ footer.site{
     transition-duration:.001ms !important;
   }
   .js .reveal{opacity:1;transform:none}
-  .js .reveal-zoom img{transform:none}
+  .js .reveal-zoom img,
+  .js .reveal-zoom video{transform:none}
   .js .hero-anim{opacity:1;transform:none}
   .js .hero-bg img{transform:scale(1.12)}
   .aurora-field span,.hero-glow span{animation:none}
@@ -1911,9 +1927,11 @@ footer.site{
         </div>
 
         <figure class="apt-figure framed reveal reveal-zoom">
-          <!-- FOTO: Sonnenuntergang vom Balkon aus -->
-          <img src="images/sonnenuntergang-balkon.jpg" width="1200" height="1313" loading="lazy" decoding="async"
-               alt="Sonnenuntergang über den Hügeln, gesehen vom Balkon der Wohnung">
+          <!-- VIDEO: Farne im Sonnenlicht · Jakub Klawikowski (Artlist) -->
+          <video id="aptVideo" src="media/wohnung-wald.mp4"
+                 width="1920" height="1080"
+                 muted loop playsinline preload="metadata"
+                 aria-label="Farnwedel bewegen sich sanft im Sonnenlicht eines Waldes"></video>
         </figure>
       </div>
 
@@ -3086,6 +3104,44 @@ footer.site{
      ========================================================= */
   var calm = window.matchMedia('(prefers-reduced-motion: reduce)');
   var observerAlive = false;
+
+  /* =========================================================
+     APARTMENT VIDEO
+     Plays only while on screen: off-screen playback would keep decoding and
+     drain battery for nothing. With reduced motion it never starts by itself,
+     and gains controls so it can still be watched on request.
+     ========================================================= */
+  var aptVideo = document.getElementById('aptVideo');
+  if (aptVideo) {
+    var videoObserved = false;
+
+    var playVideo = function(){
+      /* Older Safari returns undefined rather than a promise */
+      var p = aptVideo.play();
+      if (p && p.catch) p.catch(function(){ aptVideo.controls = true; });
+    };
+
+    if (calm.matches) {
+      aptVideo.controls = true;
+    } else if ('IntersectionObserver' in window) {
+      var vio = new IntersectionObserver(function(entries){
+        videoObserved = true;
+        entries.forEach(function(e){
+          if (e.isIntersecting) playVideo(); else aptVideo.pause();
+        });
+      }, { threshold: 0.25 });
+      vio.observe(aptVideo);
+
+      /* Some engines never deliver observer callbacks. Rather than leave a
+         frozen frame behind, start the loop anyway — browsers throttle
+         decoding of off-screen video on their own. */
+      setTimeout(function(){
+        if (!videoObserved) { vio.disconnect(); playVideo(); }
+      }, 2000);
+    } else {
+      playVideo();
+    }
+  }
 
   var hero = document.querySelector('.hero');
   function lightHero(){ hero.classList.add('hero-lit'); }

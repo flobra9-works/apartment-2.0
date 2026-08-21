@@ -43,7 +43,9 @@ Gleich darunter folgt eine Leiste mit sechs Merkmalen: **Blitzsauber · Gäste-F
 
 Die Sektion zeigt zuerst zehn Highlights als Karten, darunter alle **51 Ausstattungsmerkmale** als kleine Chips, in acht Gruppen: Ausblick (2) · Bad (5) · Schlafen & Wäsche (9) · Für Familien (2) · Küche & Essen (17) · Außenbereich & Zugang (8) · Komfort & Sicherheit (5) · Services (3).
 
-Die Liste stammt 1:1 aus dem Airbnb-Dialog „Das bietet dir diese Unterkunft" (56 Einträge, davon 5 als nicht verfügbar markiert → 51 vorhandene). Abschließend nennt eine Zeile, was **nicht** vorhanden ist: Klimaanlage, Wäschetrockner, Kohlenmonoxidmelder und Außenkameras.
+Die Liste stammt 1:1 aus dem Airbnb-Dialog „Das bietet dir diese Unterkunft" (56 Einträge, davon 5 als nicht verfügbar markiert → 51 vorhandene).
+
+> Nicht vorhanden sind Klimaanlage, Wäschetrockner, Kohlenmonoxidmelder und Außenkameras. Das stand als Zeile auf der Seite und wurde auf Wunsch entfernt — im Airbnb-Inserat ist es weiterhin sichtbar.
 
 > **Zwei Widersprüche im Airbnb-Inserat, bitte prüfen:**
 > 1. Der Beschreibungstext nennt einen **Ultra-HD Smart TV**, in der Merkmalsliste ist **HDTV aber als „nicht verfügbar" markiert**. Die Seite folgt der Beschreibung und führt den TV unter den Highlights. Vermutlich ist auf Airbnb nur das Häkchen nicht gesetzt.
@@ -127,9 +129,29 @@ Alles respektiert `prefers-reduced-motion`.
 
 ## Der schwebende Buttonblock
 
-Rechts unten liegt ein fixiertes Feld mit **„Anfrage senden"** und **„Auf Airbnb prüfen"** — ausschließlich die beiden Buchungsaktionen. Es erscheint nach dem Hero und tritt in der Sektion *Preise & Buchung* zurück, wo dieselben Aktionen bereits im Seiteninhalt stehen. Auf schmalen Bildschirmen sitzt es über der Navigationsleiste.
+Rechts unten liegt ein fixiertes Feld mit **„Unterkunft ansehen"**, **„Anfrage senden"** und **„Auf Airbnb prüfen"**. Es erscheint nach dem Hero und tritt in der Sektion *Preise & Buchung* zurück, wo dieselben Aktionen bereits im Seiteninhalt stehen.
 
-Der Galerie-Button ist **nicht** Teil davon: Er steht fest im Hero und unter der Galerie-Vorschau.
+Auf schmalen Bildschirmen werden die Beschriftungen gekürzt (`.lbl-long` wird ausgeblendet), damit alle drei einzeilig bleiben und gleich hoch stehen.
+
+## Mobile Fassung
+
+Die Navigation steht **an jeder Fensterbreite oben**. Unter 1000 px rutscht sie unter das Logo in eine eigene Zeile und scrollt seitlich, statt an den unteren Rand zu wandern.
+
+Für eine kürzere Seite auf dem Telefon:
+
+| Bereich | Auf dem Telefon |
+|---|---|
+| Auszeichnungs-Leiste | festes Dreier-Raster → genau zwei Zeilen, in beiden Sprachen |
+| Entfernungen | alle vier in **einer** Karte statt vier Kacheln |
+| Ausstattung | die zehn Highlights zu dritt nebeneinander, ohne Erläuterungszeile |
+| Galerie | zwei Spalten statt einer |
+| Jahreszeiten | bleibt zweispaltig |
+| Region | Distanzkarten zu zweit nebeneinander |
+| durchgehend | kleinerer Abstand zwischen Abschnitten, straffere Innenabstände |
+
+Das ergibt **rund 20 % weniger Seitenlänge** (von 19 279 px auf 15 459 px bei 375 × 812).
+
+> **Wichtig beim Nacharbeiten:** Der Block mit den mobilen Straffungen steht **am Ende des Stylesheets**, direkt vor `prefers-reduced-motion`. Er muss dort bleiben: Die Regeln haben dieselbe Spezifität wie die Komponenten-Regeln weiter oben, also entscheidet die Quellreihenfolge. Weiter oben eingefügt bleiben sie wirkungslos.
 
 ## Zweisprachigkeit
 

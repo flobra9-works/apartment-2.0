@@ -1957,8 +1957,13 @@ footer.site{
   .amen-group-title{margin-bottom:10px;padding-bottom:7px}
   .amen-chips{gap:5px}
   .amen-chips li{padding:5px 10px;font-size:.78rem}
-  .quote{padding:18px;gap:12px}
-  .quotes{gap:10px}
+  /* Two reviews to a row. The quote type shrinks so the narrower column still
+     reads comfortably rather than breaking into very short lines. */
+  .quotes{grid-template-columns:repeat(2,1fr);gap:8px}
+  .quote{padding:14px 13px;gap:10px}
+  .quote blockquote{font-size:.95rem;line-height:1.35}
+  .quote cite{font-size:.72rem}
+  .quote .stars svg{width:13px;height:13px}
   .rating-panel{padding:18px 20px;gap:14px;margin-bottom:18px}
   .dist-grid,.facts-grid{gap:8px}
   .fact{padding:16px 18px}
@@ -2065,7 +2070,7 @@ footer.site{
         <a class="btn btn-primary" href="#buchung" data-i18n="hero.ctaPrimary">Verfügbarkeit anfragen</a>
         <button type="button" class="btn btn-ghost js-open-all">
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
-          <span data-i18n="hero.ctaGallery">Alle Bilder ansehen</span>
+          <span data-i18n="hero.ctaGallery">Unterkunft ansehen</span>
         </button>
         <span class="badge" data-i18n="hero.badge">September noch verfügbar</span>
       </div>
@@ -2978,7 +2983,7 @@ footer.site{
       'trust.clean':'Spotless','trust.superhost':'<span class="t-long">Guest favourite &amp; </span>Superhost',
       'trust.bedrooms':'2 bedrooms','trust.guests':'up to 5 guests',
       'trust.outdoor':'Balcony & garden','trust.entrance':'Private entrance',
-      'hero.ctaPrimary':'Check availability','hero.ctaGallery':'See all photos',
+      'hero.ctaPrimary':'Check availability','hero.ctaGallery':'See the place',
       'hero.badge':'September still available',
 
       'facts.guests':'Guests across 2 bedrooms and 3 beds',
